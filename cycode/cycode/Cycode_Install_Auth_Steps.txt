@@ -1,0 +1,94 @@
+Cycode CLI Installation and Authentication - Windows
+
+1. Check Python
+Open CMD and run:
+
+py --version
+
+
+2. Install Cycode CLI
+
+py -m pip install --upgrade cycode
+
+Check the installed version:
+
+py -m pip show cycode
+
+You should see something like:
+
+Name: cycode
+Version: 3.24.0
+
+
+3. If 'cycode' command is not recognized
+
+Check whether cycode.exe exists:
+
+dir "%APPDATA%\Python\Python312\Scripts\cycode*"
+
+Add the Scripts directory to PATH for the current CMD:
+
+set "PATH=%PATH%;%APPDATA%\Python\Python312\Scripts"
+
+Then test:
+
+cycode -h
+
+Note:
+If your Python version is not 3.12, the Python312 folder name may be different.
+
+
+4. Authenticate with Cycode
+
+Run:
+
+cycode auth
+
+A browser should open.
+Log in with your Cycode account and complete the authentication.
+
+Do not share your login token, Client ID, or Client Secret.
+
+
+5. Verify Cycode access
+
+Run:
+
+cycode platform -h
+
+Then:
+
+cycode platform violations -h
+
+You should see commands similar to:
+
+count
+list
+scan
+view
+
+
+6. Test violation access for System 7000 project
+
+Project ID: 25214
+
+Run:
+
+cycode platform violations count --status Open --project-ids 25214
+
+For a small sample:
+
+cycode platform violations list --status Open --project-ids 25214 --page-size 2
+
+
+7. Run the System 7000 Excel automation
+
+Go to the folder where the script is saved, for example:
+
+cd C:\Users\RP112199\Downloads\cycode
+
+Run:
+
+py cycode_system7000_report.py
+
+This will pull Cycode data and generate the Excel report automatically.

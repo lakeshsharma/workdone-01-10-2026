@@ -1,0 +1,3 @@
+[console_scripts]
+cycode=cycode.cli.app:app
+

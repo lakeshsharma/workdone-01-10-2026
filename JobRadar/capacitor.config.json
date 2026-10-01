@@ -1,0 +1,14 @@
+{
+  "appId": "com.lakesh.jobradar",
+  "appName": "Job Radar",
+  "webDir": "www",
+  "backgroundColor": "#0B0D12",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Job Radar</title>
+<style>
+  :root{
+    --bg:#0A0913; --surface:#151327; --surface-2:#1E1B38; --border:#332F52;
+    --text:#F1EEFF; --text-dim:#9891C0; --accent:#3CE8C4; --accent-soft:#3CE8C42E;
+    --accent2:#8B5CF6; --accent2-soft:#8B5CF62E; --accent3:#FF5C8A; --accent3-soft:#FF5C8A26;
+    --warn:#FFB443; --warn-soft:#FFB4431F; --danger:#EF6B62; --danger-soft:#EF6B621F;
+    --grad-brand:linear-gradient(90deg,#3CE8C4,#8B5CF6);
+    --grad-cta:linear-gradient(135deg,#3CE8C4,#22C1A0);
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{margin:0; background:
+      radial-gradient(650px 340px at 10% 0%, #3CE8C42E 0%, transparent 62%),
+      radial-gradient(600px 320px at 105% 5%, #8B5CF638 0%, transparent 58%),
+      radial-gradient(500px 260px at 50% 100%, #FF5C8A17 0%, transparent 60%),
+      var(--bg);
+    color:var(--text); font-family:-apple-system,Roboto,Segoe UI,system-ui,sans-serif;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);}
+  .wrap{max-width:640px; margin:0 auto; padding:14px 14px 88px;}
+  .topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:10; background:transparent;
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    padding-block:10px 8px; border-bottom:1px solid var(--border); margin-bottom:14px;}
+  .brand{display:flex; align-items:center; gap:8px;}
+  .dot{width:9px; height:9px; border-radius:50%; background:var(--grad-brand); box-shadow:0 0 0 5px var(--accent-soft), 0 0 14px var(--accent2);}
+  .brand h1{font-size:21px; font-weight:800; margin:0; letter-spacing:.02em;
+    background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .meta-row{display:flex; justify-content:space-between; align-items:center; margin-top:6px; gap:8px; flex-wrap:wrap;}
+  .meta{font-size:11px; color:var(--text-dim);}
+  .btn{font-size:13px; font-weight:600; border-radius:8px; padding:9px 14px; border:1px solid var(--border);
+    background:var(--surface); color:var(--text); cursor:pointer;}
+  .btn.primary{background:var(--grad-cta); border-color:transparent; color:#062018; box-shadow:0 4px 16px -6px #3CE8C480;}
+  .btn.small{padding:6px 11px; font-size:12px; border-radius:6px;}
+  .btn:disabled{opacity:.55;}
+  .panel{display:none;} .panel.active{display:block;}
+
+  /* ---------- bottom nav ---------- */
+  .bottomnav{position:fixed; left:0; right:0; bottom:0; z-index:50; display:flex;
+    background:rgba(18,21,28,.92); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+    border-top:1px solid var(--border); box-shadow:0 -8px 24px -8px rgba(0,0,0,.5);
+    padding:9px 4px calc(9px + env(safe-area-inset-bottom,0px));}
+  .navitem{flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer;
+    color:var(--text-dim); font-size:10.5px; font-weight:600; border:none; background:none; padding:5px 2px; border-radius:12px;}
+  .navitem svg{width:21px; height:21px; stroke:var(--text-dim); fill:none; stroke-width:1.8; transition:stroke .15s;}
+  .navitem.active{color:var(--accent); background:linear-gradient(135deg,var(--accent-soft),var(--accent2-soft));}
+  .navitem.active svg{stroke:var(--accent);}
+
+  /* ---------- home search + pills ---------- */
+  .searchbar{display:flex; align-items:center; gap:8px; background:var(--surface-2); border:1px solid var(--border);
+    border-radius:14px; padding:12px 14px; margin-bottom:14px; box-shadow:inset 0 1px 0 rgba(255,255,255,.03);}
+  .searchbar svg{width:17px; height:17px; stroke:var(--text-dim); fill:none; stroke-width:2; flex-shrink:0;}
+  .searchbar input{flex:1; border:none; background:transparent; color:var(--text); font-size:14.5px; outline:none;}
+  .pillrow{display:flex; gap:8px; overflow-x:auto; padding-bottom:12px; margin-bottom:6px; -webkit-overflow-scrolling:touch;}
+  .pillrow::-webkit-scrollbar{display:none;}
+  .rolepill{flex:0 0 auto; padding:8px 15px; border-radius:20px; border:1px solid var(--border); background:var(--surface);
+    color:var(--text-dim); font-size:12.5px; font-weight:700; white-space:nowrap; cursor:pointer; transition:all .15s;}
+  .rolepill.active{background:var(--grad-brand); border-color:transparent; color:#0A0913; font-weight:800; box-shadow:0 4px 16px -4px var(--accent2);}
+
+  /* ---------- segmented control (My Jobs) ---------- */
+  .segctrl{display:flex; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:3px; margin-bottom:14px;}
+  .segbtn{flex:1; text-align:center; padding:8px 6px; border-radius:8px; font-size:13px; font-weight:700;
+    color:var(--text-dim); cursor:pointer; border:none; background:none;}
+  .segbtn.active{background:linear-gradient(135deg,var(--accent-soft),var(--accent2-soft)); color:var(--text);}
+
+  .card{background:linear-gradient(180deg,#151924,var(--surface)); border:1px solid var(--border); border-radius:16px; margin-bottom:12px;
+    padding:14px; position:relative; overflow:hidden; box-shadow:0 6px 18px -8px rgba(0,0,0,.55);}
+  .card .stripe{position:absolute; left:0; top:0; bottom:0; width:4px;}
+  .stripe.worldwide{background:var(--grad-brand);} .stripe.foreign{background:linear-gradient(180deg,var(--warn),var(--accent3));}
+  .stripe.india,.stripe.other{background:var(--text-dim);}
+  .card-top{display:flex; align-items:flex-start; gap:11px;}
+  .logo-badge{width:44px; height:44px; border-radius:13px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:17px; color:#fff; overflow:hidden; position:relative; box-shadow:0 4px 14px -3px rgba(0,0,0,.6);}
+  .logo-badge img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .card-head{flex:1; min-width:0;}
+  .job-title{font-weight:700; font-size:14.5px; line-height:1.35;}
+  .job-company{color:var(--text-dim); font-size:12.5px; margin-top:2px;}
+  .job-location{display:flex; align-items:center; gap:4px; color:var(--text-dim); font-size:11.5px; margin-top:5px;}
+  .job-location svg{width:12px; height:12px; stroke:var(--text-dim); fill:none; stroke-width:2; flex-shrink:0;}
+  .bookmark-btn{flex-shrink:0; background:none; border:none; padding:2px; cursor:pointer;}
+  .bookmark-btn svg{width:20px; height:20px; stroke:var(--text-dim); fill:none; stroke-width:1.8;}
+  .bookmark-btn.saved svg{stroke:var(--accent); fill:var(--accent);}
+  .chips{display:flex; gap:6px; flex-wrap:wrap; margin:10px 0 0;}
+  .chip{font-size:10.5px; padding:3px 9px; border-radius:20px; border:1px solid var(--border); color:var(--text-dim); font-weight:600;}
+  .chip.region-worldwide{color:var(--accent); border-color:transparent; background:var(--accent-soft);}
+  .chip.region-foreign{color:var(--warn); border-color:transparent; background:var(--warn-soft);}
+  .chip.source{color:var(--accent2); border-color:transparent; background:var(--accent2-soft);}
+  .chip.posted{color:var(--accent3); border-color:transparent; background:var(--accent3-soft);}
+  .salary-line{display:inline-block; font-size:15px; font-weight:800; color:#062018; margin-top:10px;
+    background:var(--grad-cta); padding:6px 13px; border-radius:10px;}
+  .actions{display:flex; gap:8px; margin-top:10px; align-items:center; flex-wrap:wrap;}
+  .applied-row{display:flex; align-items:center; gap:6px; font-size:12px; color:var(--text-dim); margin-left:auto;}
+  .applied-row input{width:15px; height:15px;}
+  a.applylink{text-decoration:none;}
+  .empty{padding:36px 12px; text-align:center; color:var(--text-dim); font-size:13px;}
+  .quickapply{margin-top:9px; padding:10px; background:var(--surface-2); border-radius:8px; font-size:12px;}
+  .quickapply textarea{width:100%; min-height:64px; margin-top:6px; font-size:12px; border-radius:6px;
+    border:1px solid var(--border); background:var(--surface); color:var(--text); padding:8px; font-family:inherit;}
+  code.email{background:var(--surface); padding:2px 6px; border-radius:5px; user-select:all;}
+  .copybtns{display:flex; gap:6px; margin-top:6px;}
+
+  .section-title{font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; margin:20px 0 9px;}
+  .field{margin-bottom:13px;}
+  .field label{display:block; font-size:11.5px; font-weight:700; color:var(--text-dim); margin-bottom:5px;
+    text-transform:uppercase; letter-spacing:.03em;}
+  .field input[type=text], .field input[type=number], .field input[type=email], .field select{
+    width:100%; padding:9px 10px; border-radius:8px; border:1px solid var(--border);
+    background:var(--surface); color:var(--text); font-size:14px;}
+  .field-row{display:flex; gap:10px;} .field-row .field{flex:1;}
+  .checkgrid{display:grid; grid-template-columns:1fr 1fr; gap:6px 10px;}
+  @media (max-width:420px){ .checkgrid{grid-template-columns:1fr;} }
+  .chiprow{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:10px;}
+  .chiprow:empty{margin-bottom:0;}
+  .selchip{display:flex; align-items:center; gap:7px; background:linear-gradient(135deg,var(--accent-soft),var(--accent2-soft));
+    border:1px solid var(--accent2); color:var(--text); font-size:12.5px; font-weight:600; padding:6px 8px 6px 12px; border-radius:20px;}
+  .selchip button{background:none; border:none; color:var(--text-dim); cursor:pointer; padding:2px; display:flex;}
+  .selchip button svg{width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.4;}
+  .suggest-add{padding:10px 12px; font-size:13px; font-weight:700; color:var(--accent); cursor:pointer;}
+  .checkitem{display:flex; align-items:center; gap:7px; font-size:13px; padding:5px 0;}
+  .checkitem input{width:16px; height:16px; flex-shrink:0;}
+  .save-status{font-size:12px; color:var(--accent); min-height:16px; margin-top:8px;}
+  .resume-box{border:1px dashed var(--border); border-radius:8px; padding:11px; font-size:12.5px;
+    display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;}
+  .hint{font-size:11.5px; color:var(--text-dim); margin-top:-6px; margin-bottom:12px; line-height:1.5;}
+  .guide{background:var(--surface); border:1px solid var(--border); border-radius:10px; margin-bottom:12px; overflow:hidden;}
+  .guide summary{list-style:none; cursor:pointer; padding:11px 13px; display:flex; align-items:center; justify-content:space-between;
+    font-size:12.5px; font-weight:700; color:var(--accent);}
+  .guide summary::-webkit-details-marker{display:none;}
+  .guide summary .chev{width:16px; height:16px; stroke:var(--accent); fill:none; stroke-width:2; transition:transform .2s;}
+  .guide[open] summary .chev{transform:rotate(180deg);}
+  .guide ol{margin:0; padding:0 15px 13px 30px; font-size:12.5px; color:var(--text-dim); line-height:1.7;}
+  .guide ol a{color:var(--accent);}
+  .suggest-box{position:absolute; left:0; right:0; top:100%; margin-top:4px; background:var(--surface-2);
+    border:1px solid var(--border); border-radius:8px; max-height:220px; overflow-y:auto; z-index:20;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);}
+  .suggest-item{padding:9px 12px; font-size:13.5px; cursor:pointer; border-bottom:1px solid var(--border);}
+  .suggest-item:last-child{border-bottom:none;}
+  .suggest-item:active, .suggest-item.hi{background:var(--surface);}
+  .suggest-item .city-state{color:var(--text-dim); font-size:11.5px;}
+  .progress{font-size:12px; color:var(--text-dim); text-align:center; padding:16px;}
+
+  /* ---------- splash ---------- */
+  #splash{position:fixed; inset:0; z-index:999;
+    background:radial-gradient(120% 90% at 20% 10%, #3CE8C42E 0%, transparent 55%),
+      radial-gradient(120% 90% at 85% 15%, #8B5CF640 0%, transparent 55%),
+      radial-gradient(120% 120% at 50% 100%, #FF5C8A1F 0%, transparent 60%),
+      #08070F;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;
+    transition:opacity .5s ease, visibility .5s ease;}
+  #splash.hidden{opacity:0; visibility:hidden; pointer-events:none;}
+  .radar-wrap{position:relative; width:150px; height:150px;}
+  .radar-ring{position:absolute; inset:0; border:1px solid #8B5CF640; border-radius:50%;}
+  .radar-ring:nth-child(2){inset:20px;} .radar-ring:nth-child(3){inset:40px;} .radar-ring:nth-child(4){inset:60px;}
+  .radar-sweep{position:absolute; inset:0; border-radius:50%; overflow:hidden;
+    animation:sweep 2.2s linear infinite;}
+  .radar-sweep::before{content:""; position:absolute; inset:0;
+    background:conic-gradient(from 0deg, #3CE8C4 0deg, #8B5CF6 35deg, transparent 60deg, transparent 360deg);}
+  .radar-dot{position:absolute; top:50%; left:50%; width:9px; height:9px; border-radius:50%; background:var(--grad-brand);
+    transform:translate(-50%,-50%); box-shadow:0 0 18px 5px var(--accent2-soft);}
+  @keyframes sweep{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  .splash-title{font-size:27px; font-weight:800; letter-spacing:.12em; color:var(--text); text-align:center;}
+  .splash-title span{background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .splash-tagline{font-size:14px; color:var(--text-dim); text-align:center; max-width:280px; line-height:1.5;}
+  .splash-credit{font-size:11.5px; color:var(--text-dim); letter-spacing:.08em; text-transform:uppercase;
+    border-top:1px solid var(--border); padding-top:12px; margin-top:6px;}
+  .splash-credit b{background:var(--grad-brand); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:.04em;}
+</style>
+</head>
+<body>
+<div id="splash">
+  <div class="radar-wrap">
+    <div class="radar-ring"></div><div class="radar-ring"></div><div class="radar-ring"></div><div class="radar-ring"></div>
+    <div class="radar-sweep"></div>
+    <div class="radar-dot"></div>
+  </div>
+  <div class="splash-title">JOB<span> RADAR</span></div>
+  <div class="splash-tagline">Get the jobs you want, in just a few taps.</div>
+  <div class="splash-credit">Presented by <b>L. Sharma</b></div>
+</div>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span><h1>JOB RADAR</h1></div>
+    <div class="meta-row">
+      <span class="meta" id="lastUpdated">not loaded yet</span>
+      <button class="btn small" id="refreshBtn">Refresh</button>
+    </div>
+  </div>
+
+  <div class="panel active" id="panel-scope">
+    <div class="searchbar">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="homeSearchInput" placeholder="Search title or company…">
+    </div>
+    <div class="pillrow" id="rolePillRow"></div>
+    <div id="jobList"><div class="empty">Tap Refresh to pull today's matches.</div></div>
+  </div>
+
+  <div class="panel" id="panel-company">
+    <div class="hint" style="margin-top:2px;">Type a company's website — if their careers page runs on Greenhouse or
+      Lever (very common), this searches it directly against your profile. Most companies don't use either, and
+      there's no reliable way in for those — you'll get a clear message either way, never a guess.</div>
+    <div class="field-row" style="margin-top:10px;">
+      <div class="field" style="flex:2;"><input type="text" id="companyUrlInput" placeholder="e.g. stripe.com or www.amazon.com"></div>
+      <div class="field" style="flex:0 0 auto;"><button class="btn primary" id="companySearchBtn">Search</button></div>
+    </div>
+    <div id="companyStatus" class="hint" style="margin-top:0;"></div>
+    <div id="companyResults"></div>
+  </div>
+
+  <div class="panel" id="panel-portals">
+    <div class="hint" style="margin-top:2px;">These sites don't allow automated search (no public API, and their terms
+      ban scraping) — so instead of skipping them, here's a direct link into each one's own search, pre-filled from
+      your Profile. Tap through, review, and apply on their site.</div>
+    <div id="portalList"></div>
+  </div>
+
+  <div class="panel" id="panel-myjobs">
+    <div class="segctrl">
+      <button class="segbtn active" data-seg="saved">Saved</button>
+      <button class="segbtn" data-seg="applied">Applied</button>
+    </div>
+    <div id="savedList"><div class="empty">Nothing saved yet — tap the bookmark icon on any job.</div></div>
+    <div id="appliedList" style="display:none;"><div class="empty">Nothing marked applied yet.</div></div>
+  </div>
+
+  <div class="panel" id="panel-profile">
+    <div class="section-title">Contact</div>
+    <div class="field"><label>Name</label><input type="text" id="p_name"></div>
+    <div class="field-row">
+      <div class="field"><label>Email</label><input type="email" id="p_email"></div>
+      <div class="field"><label>Phone</label><input type="text" id="p_phone"></div>
+    </div>
+    <div class="field" style="position:relative;"><label>Location</label>
+      <input type="text" id="p_location" placeholder="Start typing your city or district…" autocomplete="off">
+      <div id="citySuggestions" class="suggest-box" hidden></div>
+    </div>
+
+    <div class="section-title">Roles to apply for</div>
+    <div class="hint">Search any field — tech, HR, finance, teaching, arts, whatever. Tap a match to add it, or add your
+      own exact text as a custom filter if nothing matches.</div>
+    <div class="chiprow" id="selectedRoles"></div>
+    <div class="field" style="position:relative;">
+      <input type="text" id="roleSearchInput" placeholder="Type a role — e.g. DevOps, HR Manager, Teacher…" autocomplete="off">
+      <div id="roleSuggestions" class="suggest-box" hidden></div>
+    </div>
+
+    <div class="section-title">Work mode</div>
+    <div class="checkgrid" id="modeGrid"></div>
+    <div class="hint">Most free job boards only list remote roles, so Hybrid/On-site will show fewer or no matches.</div>
+
+    <div class="section-title">Search preferences</div>
+    <div class="field-row">
+      <div class="field"><label>Years of experience</label><input type="number" id="p_years" min="0" max="40"></div>
+      <div class="field"><label>Minimum salary (USD/yr)</label><input type="number" id="p_salary" step="1000"></div>
+    </div>
+    <div class="field">
+      <label>Notice period</label>
+      <select id="p_notice">
+        <option value="Immediate">Immediate</option>
+        <option value="15 days">15 days</option>
+        <option value="30 days">30 days</option>
+        <option value="45 days">45 days</option>
+        <option value="60 days">60 days</option>
+        <option value="90 days">90 days</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </div>
+    <div class="field" id="p_notice_custom_wrap" hidden>
+      <label>Custom notice period</label>
+      <input type="text" id="p_notice_custom" placeholder="e.g. Negotiable, Serving 20 of 60 days">
+    </div>
+    <div class="hint">No job source tracks this, so it's not a search filter — it just gets added to the Quick Apply
+      cover letter draft so recruiters see it upfront.</div>
+    <div class="field">
+      <label>Region preference</label>
+      <select id="p_region">
+        <option value="foreign_first">Foreign-first, show India too</option>
+        <option value="foreign_only">Foreign only</option>
+        <option value="india_only">India only</option>
+        <option value="all">No preference</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Filter fake / scam postings</label>
+      <select id="p_scamfilter">
+        <option value="strict">Strict (recommended)</option>
+        <option value="off">Off — show everything</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Company type</label>
+      <select id="p_companytype">
+        <option value="both">Both (no preference)</option>
+        <option value="product">Product-based only</option>
+        <option value="service">Service-based only</option>
+      </select>
+    </div>
+    <div class="hint">No job source tags this, so it's matched by company name against a list of ~60 known IT
+      services/consulting/BPO firms (TCS, Infosys, Accenture, Cognizant, etc.). Anything not on that list is treated
+      as product-based — right for the vast majority of companies on these boards, but not perfect for small or
+      unfamiliar names.</div>
+
+    <div class="section-title">More sources (optional)</div>
+    <div class="hint">Adzuna and Jooble are legitimate job-search APIs that need a free key you get yourself — I won't
+      create accounts for you. Adding one meaningfully increases India coverage. Leave blank to skip.</div>
+
+    <details class="guide">
+      <summary>How to get an Adzuna App ID &amp; Key <svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <ol>
+        <li>Open <a href="https://developer.adzuna.com/" target="_blank" rel="noopener">developer.adzuna.com</a> and tap "Register".</li>
+        <li>Sign up with your email — free, no card needed.</li>
+        <li>After confirming your email and logging in, your <b>App ID</b> and <b>App Key</b> are shown on your account/dashboard page.</li>
+        <li>Copy both into the fields below.</li>
+      </ol>
+    </details>
+    <div class="field-row">
+      <div class="field"><label>Adzuna App ID</label><input type="text" id="p_adzuna_id" placeholder="e.g. a1b2c3d4"></div>
+      <div class="field"><label>Adzuna App Key</label><input type="text" id="p_adzuna_key" placeholder="a long hex string"></div>
+    </div>
+
+    <details class="guide">
+      <summary>How to get a Jooble API Key <svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <ol>
+        <li>Open <a href="https://jooble.org/api/about" target="_blank" rel="noopener">jooble.org/api/about</a>.</li>
+        <li>Fill in the short request form — your name, email, and a one-line description of this app.</li>
+        <li>Submit it — Jooble emails you an API key, usually within a day.</li>
+        <li>Paste the key into the field below.</li>
+      </ol>
+    </details>
+    <div class="field"><label>Jooble API Key</label><input type="text" id="p_jooble_key" placeholder="from the email Jooble sends you"></div>
+
+    <div class="section-title">Company verification (optional, important)</div>
+    <div class="hint">No filter can guarantee a listing is 100% legitimate — treat this as help, not proof. With a
+      free API key from OpenCorporates, the "Verify" button on each job card checks if the company is an actual
+      registered business. Without a key, that same button opens a quick manual search instead — still useful, just
+      not automatic.</div>
+
+    <details class="guide">
+      <summary>How to get an OpenCorporates API Key <svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <ol>
+        <li>Open <a href="https://opencorporates.com/api_accounts/new" target="_blank" rel="noopener">opencorporates.com/api_accounts/new</a>.</li>
+        <li>Sign up for a free account (email + password, on their site — not this app).</li>
+        <li>Once confirmed, go to your account page — your API token is listed there. Free tier has a limited monthly
+          call quota, which is plenty for personal use.</li>
+        <li>Copy the token into the field below.</li>
+      </ol>
+    </details>
+    <div class="field"><label>OpenCorporates API Key</label><input type="text" id="p_opencorp_key" placeholder="your API token"></div>
+
+    <div class="section-title">Resume</div>
+    <div class="resume-box">
+      <span id="resumeStatus">No resume saved on this device yet.</span>
+      <label class="btn small">Upload PDF<input type="file" id="resumeInput" accept="application/pdf" style="display:none;"></label>
+    </div>
+    <div class="hint">Stored only on this device (not uploaded anywhere).</div>
+
+    <button class="btn primary" id="saveProfileBtn" style="margin-top:6px;">Save Profile</button>
+    <div class="save-status" id="saveStatus"></div>
+  </div>
+</div>
+
+<div class="bottomnav" id="bottomNav">
+  <button class="navitem active" data-tab="scope">
+    <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+    Home
+  </button>
+  <button class="navitem" data-tab="company">
+    <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>
+    Company
+  </button>
+  <button class="navitem" data-tab="portals">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 000 18M3 12h18"/></svg>
+    Portals
+  </button>
+  <button class="navitem" data-tab="myjobs">
+    <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg>
+    My Jobs
+  </button>
+  <button class="navitem" data-tab="profile">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+    Profile
+  </button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // Large searchable role database across many industries. Format per entry: "Label|match1;match2".
+  // "match" terms are what gets checked against job titles (substring, case-insensitive).
+  var ROLES_DB = (
+    "DevOps Engineer|devops," +
+    "Site Reliability Engineer (SRE)|site reliability;sre," +
+    "Platform Engineer|platform engineer;platform reliability," +
+    "Cloud Engineer|cloud engineer," +
+    "Cloud Architect|cloud architect," +
+    "Infrastructure Engineer|infrastructure engineer," +
+    "Systems Administrator|system administrator;sysadmin," +
+    "Release Engineer|release engineer," +
+    "Build Engineer|build engineer," +
+    "DevSecOps / Security Engineer|devsecops;security engineer," +
+    "Kubernetes Engineer|kubernetes engineer," +
+    "Automation Engineer|automation engineer," +
+    "Cloud Solutions Architect|solutions architect," +
+    "Network Engineer|network engineer," +
+    "Database Administrator|database administrator;dba," +
+    "Software Engineer|software engineer;software developer," +
+    "Full Stack Developer|full stack;fullstack," +
+    "Front End Developer|front end developer;front-end developer;frontend developer," +
+    "Back End Developer|back end developer;back-end developer;backend developer," +
+    "Mobile App Developer|mobile developer;ios developer;android developer," +
+    "Data Engineer|data engineer," +
+    "Data Scientist|data scientist," +
+    "Data Analyst|data analyst," +
+    "Machine Learning Engineer|machine learning engineer;ml engineer," +
+    "AI Engineer|ai engineer;artificial intelligence engineer," +
+    "QA / Test Engineer|qa engineer;test engineer;quality assurance," +
+    "Solutions Architect|solutions architect," +
+    "Technical Product Manager|technical product manager;product manager," +
+    "Technical Program Manager|technical program manager," +
+    "Scrum Master / Agile Coach|scrum master;agile coach," +
+    "UI/UX Designer|ux designer;ui designer;ui/ux," +
+    "Product Designer|product designer," +
+    "Business Analyst|business analyst," +
+    "Management Consultant|management consultant," +
+    "Operations Manager|operations manager," +
+    "Project Manager|project manager," +
+    "Program Manager|program manager," +
+    "Business Development Manager|business development," +
+    "General Manager|general manager," +
+    "Chief of Staff|chief of staff," +
+    "Accountant|accountant," +
+    "Chartered Accountant (CA)|chartered accountant;ca," +
+    "Financial Analyst|financial analyst," +
+    "Investment Banker|investment bank," +
+    "Auditor|auditor," +
+    "Bookkeeper|bookkeeper," +
+    "Tax Consultant|tax consultant;tax advisor," +
+    "Finance Manager|finance manager," +
+    "Financial Controller|financial controller," +
+    "CFO|chief financial officer;cfo," +
+    "Economist|economist," +
+    "HR Manager|hr manager;human resources manager," +
+    "HR Generalist|hr generalist," +
+    "Recruiter / Talent Acquisition|recruiter;talent acquisition," +
+    "HR Business Partner|hr business partner," +
+    "Learning & Development Specialist|learning and development;l&d," +
+    "Marketing Manager|marketing manager," +
+    "Digital Marketing Specialist|digital marketing," +
+    "SEO Specialist|seo specialist;seo," +
+    "Content Marketing Manager|content marketing," +
+    "Social Media Manager|social media manager," +
+    "Brand Manager|brand manager," +
+    "Growth Marketer|growth marketer;growth marketing," +
+    "Marketing Analyst|marketing analyst," +
+    "Sales Executive|sales executive," +
+    "Account Executive|account executive," +
+    "Business Development Representative|business development representative;bdr," +
+    "Sales Manager|sales manager," +
+    "Account Manager|account manager," +
+    "Customer Success Manager|customer success," +
+    "Customer Support Representative|customer support;customer service representative," +
+    "Technical Support Engineer|technical support," +
+    "Operations Analyst|operations analyst," +
+    "Supply Chain Manager|supply chain," +
+    "Logistics Coordinator|logistics coordinator;logistics," +
+    "Lawyer / Attorney|lawyer;attorney," +
+    "Legal Counsel|legal counsel," +
+    "Paralegal|paralegal," +
+    "Compliance Officer|compliance officer," +
+    "Contract Manager|contract manager," +
+    "Teacher|teacher," +
+    "Professor / Lecturer|professor;lecturer," +
+    "Tutor|tutor," +
+    "Curriculum Developer|curriculum developer," +
+    "Instructional Designer|instructional designer," +
+    "Education Consultant|education consultant," +
+    "Nurse|nurse;nursing," +
+    "Physician / Doctor|physician;doctor," +
+    "Pharmacist|pharmacist," +
+    "Medical Assistant|medical assistant," +
+    "Healthcare Administrator|healthcare administrator," +
+    "Clinical Research Associate|clinical research," +
+    "Content Writer|content writer," +
+    "Copywriter|copywriter," +
+    "Technical Writer|technical writer," +
+    "Editor|editor," +
+    "Journalist|journalist," +
+    "Content Strategist|content strategist," +
+    "Graphic Designer|graphic designer," +
+    "Illustrator|illustrator," +
+    "Video Editor|video editor," +
+    "Animator|animator," +
+    "Photographer|photographer," +
+    "Art Director|art director," +
+    "Fashion Designer|fashion designer," +
+    "Interior Designer|interior designer," +
+    "Mechanical Engineer|mechanical engineer," +
+    "Civil Engineer|civil engineer," +
+    "Electrical Engineer|electrical engineer," +
+    "Chemical Engineer|chemical engineer," +
+    "Industrial Engineer|industrial engineer," +
+    "Structural Engineer|structural engineer," +
+    "Research Scientist|research scientist," +
+    "Research Analyst|research analyst," +
+    "Lab Technician|lab technician;laboratory technician," +
+    "Biotechnologist|biotechnologist;biotech," +
+    "Administrative Assistant|administrative assistant," +
+    "Executive Assistant|executive assistant," +
+    "Office Manager|office manager," +
+    "Data Entry Clerk|data entry," +
+    "Receptionist|receptionist," +
+    "Hotel Manager|hotel manager," +
+    "Event Coordinator|event coordinator;event manager," +
+    "Chef|chef," +
+    "Restaurant Manager|restaurant manager"
+  ).split(",").map(function(s){
+    var parts=s.split("|"); var label=parts[0]; var match=(parts[1]||"").split(";").filter(Boolean);
+    return {label:label, match:match.length?match:[label.toLowerCase()]};
+  });
+
+  var DEFAULT_ROLE_LABELS = ["DevOps Engineer","Site Reliability Engineer (SRE)","Platform Engineer","Cloud Engineer","Cloud Architect","Infrastructure Engineer","Kubernetes Engineer"];
+  function findRoleByLabel(label){
+    var norm=String(label||"").trim().toLowerCase();
+    return ROLES_DB.filter(function(r){ return r.label.toLowerCase()===norm; })[0] || null;
+  }
+  function defaultRoles(){
+    return DEFAULT_ROLE_LABELS.map(findRoleByLabel).filter(Boolean);
+  }
+  var MODES = [
+    {key:"remote", label:"Remote"},
+    {key:"hybrid", label:"Hybrid"},
+    {key:"onsite", label:"On-site"}
+  ];
+  var DEFAULT_MODES = ["remote","hybrid"];
+
+  // India cities/districts for the location autocomplete — bundled offline, no API dependency.
+  var INDIA_PLACES = (
+    "Adilabad|Andhra Pradesh,Agra|Uttar Pradesh,Agartala|Tripura,Ahmedabad|Gujarat,Ahmednagar|Maharashtra,Aizawl|Mizoram,"+
+    "Ajmer|Rajasthan,Akola|Maharashtra,Alappuzha|Kerala,Aligarh|Uttar Pradesh,Alipurduar|West Bengal,Allahabad (Prayagraj)|Uttar Pradesh,"+
+    "Alwar|Rajasthan,Ambala|Haryana,Amravati|Maharashtra,Amreli|Gujarat,Amritsar|Punjab,Anand|Gujarat,Anantapur|Andhra Pradesh,"+
+    "Anantnag|Jammu and Kashmir,Ariyalur|Tamil Nadu,Asansol|West Bengal,Aurangabad|Maharashtra,Aurangabad|Bihar,Ayodhya|Uttar Pradesh,"+
+    "Bagalkot|Karnataka,Bahraich|Uttar Pradesh,Balaghat|Madhya Pradesh,Balasore|Odisha,Ballari (Bellary)|Karnataka,Balrampur|Uttar Pradesh,"+
+    "Banaskantha|Gujarat,Bangalore (Bengaluru)|Karnataka,Banka|Bihar,Bankura|West Bengal,Banswara|Rajasthan,Barabanki|Uttar Pradesh,"+
+    "Baramulla|Jammu and Kashmir,Barddhaman (Bardhaman)|West Bengal,Bareilly|Uttar Pradesh,Bargarh|Odisha,Barmer|Rajasthan,"+
+    "Barnala|Punjab,Barpeta|Assam,Basti|Uttar Pradesh,Bathinda|Punjab,Beed|Maharashtra,Begusarai|Bihar,Belagavi (Belgaum)|Karnataka,"+
+    "Bengaluru Rural|Karnataka,Bettiah (West Champaran)|Bihar,Bhagalpur|Bihar,Bharatpur|Rajasthan,Bharuch|Gujarat,Bhavnagar|Gujarat,"+
+    "Bhilwara|Rajasthan,Bhind|Madhya Pradesh,Bhiwani|Haryana,Bhojpur|Bihar,Bhopal|Madhya Pradesh,Bhubaneswar|Odisha,Bidar|Karnataka,"+
+    "Bijapur|Chhattisgarh,Bikaner|Rajasthan,Bilaspur|Chhattisgarh,Bilaspur|Himachal Pradesh,Bokaro|Jharkhand,Bongaigaon|Assam,"+
+    "Budaun|Uttar Pradesh,Bulandshahr|Uttar Pradesh,Buldhana|Maharashtra,Bundi|Rajasthan,Burhanpur|Madhya Pradesh,Buxar|Bihar,"+
+    "Chamba|Himachal Pradesh,Chamoli|Uttarakhand,Champawat|Uttarakhand,Champhai|Mizoram,Chandauli|Uttar Pradesh,Chandel|Manipur,"+
+    "Chandigarh|Chandigarh,Chandrapur|Maharashtra,Changlang|Arunachal Pradesh,Chennai|Tamil Nadu,Chhatarpur|Madhya Pradesh,"+
+    "Chhindwara|Madhya Pradesh,Chikballapur|Karnataka,Chikkamagaluru|Karnataka,Chirang|Assam,Chitradurga|Karnataka,"+
+    "Chitrakoot|Uttar Pradesh,Chittoor|Andhra Pradesh,Chittorgarh|Rajasthan,Churachandpur|Manipur,Churu|Rajasthan,"+
+    "Coimbatore|Tamil Nadu,Cooch Behar|West Bengal,Cuddalore|Tamil Nadu,Cuttack|Odisha,Dahod|Gujarat,Dakshina Kannada|Karnataka,"+
+    "Daman|Dadra and Nagar Haveli and Daman and Diu,Dantewada|Chhattisgarh,Darbhanga|Bihar,Darjeeling|West Bengal,Darrang|Assam,"+
+    "Datia|Madhya Pradesh,Dausa|Rajasthan,Davanagere|Karnataka,Dehradun|Uttarakhand,Delhi (New Delhi)|Delhi,Deoghar|Jharkhand,"+
+    "Deoria|Uttar Pradesh,Dewas|Madhya Pradesh,Dhalai|Tripura,Dhamtari|Chhattisgarh,Dhanbad|Jharkhand,Dhar|Madhya Pradesh,"+
+    "Dharmapuri|Tamil Nadu,Dharwad|Karnataka,Dhemaji|Assam,Dhenkanal|Odisha,Dholpur|Rajasthan,Dhubri|Assam,Dhule|Maharashtra,"+
+    "Dibrugarh|Assam,Dima Hasao|Assam,Dimapur|Nagaland,Dindigul|Tamil Nadu,Dindori|Madhya Pradesh,Diu|Dadra and Nagar Haveli and Daman and Diu,"+
+    "Doda|Jammu and Kashmir,Dumka|Jharkhand,Dungarpur|Rajasthan,Durg|Chhattisgarh,East Champaran (Motihari)|Bihar,East Godavari|Andhra Pradesh,"+
+    "East Kameng|Arunachal Pradesh,East Khasi Hills|Meghalaya,East Siang|Arunachal Pradesh,Ernakulam (Kochi)|Kerala,Erode|Tamil Nadu,"+
+    "Etah|Uttar Pradesh,Etawah|Uttar Pradesh,Faizabad|Uttar Pradesh,Faridabad|Haryana,Faridkot|Punjab,Farrukhabad|Uttar Pradesh,"+
+    "Fatehabad|Haryana,Fatehgarh Sahib|Punjab,Fatehpur|Uttar Pradesh,Firozabad|Uttar Pradesh,Firozpur|Punjab,Gadag|Karnataka,"+
+    "Gadchiroli|Maharashtra,Ganderbal|Jammu and Kashmir,Gandhinagar|Gujarat,Ganjam|Odisha,Gautam Buddh Nagar (Noida)|Uttar Pradesh,"+
+    "Gaya|Bihar,Ghaziabad|Uttar Pradesh,Ghazipur|Uttar Pradesh,Giridih|Jharkhand,Goalpara|Assam,Goa North|Goa,Goa South|Goa,"+
+    "Golaghat|Assam,Gonda|Uttar Pradesh,Gondia|Maharashtra,Gopalganj|Bihar,Gorakhpur|Uttar Pradesh,Gulbarga (Kalaburagi)|Karnataka,"+
+    "Gumla|Jharkhand,Guna|Madhya Pradesh,Guntur|Andhra Pradesh,Gurdaspur|Punjab,Gurugram (Gurgaon)|Haryana,Guwahati|Assam,"+
+    "Gwalior|Madhya Pradesh,Hailakandi|Assam,Hamirpur|Himachal Pradesh,Hamirpur|Uttar Pradesh,Hanumangarh|Rajasthan,Hapur|Uttar Pradesh,"+
+    "Harda|Madhya Pradesh,Hardoi|Uttar Pradesh,Haridwar|Uttarakhand,Hassan|Karnataka,Hathras|Uttar Pradesh,Haveri|Karnataka,"+
+    "Hazaribagh|Jharkhand,Hisar|Haryana,Hooghly|West Bengal,Hoshangabad|Madhya Pradesh,Hoshiarpur|Punjab,Howrah|West Bengal,"+
+    "Hyderabad|Telangana,Idukki|Kerala,Imphal East|Manipur,Imphal West|Manipur,Indore|Madhya Pradesh,Jabalpur|Madhya Pradesh,"+
+    "Jaipur|Rajasthan,Jaisalmer|Rajasthan,Jajpur|Odisha,Jalandhar|Punjab,Jalaun|Uttar Pradesh,Jalgaon|Maharashtra,Jalna|Maharashtra,"+
+    "Jalore|Rajasthan,Jalpaiguri|West Bengal,Jammu|Jammu and Kashmir,Jamnagar|Gujarat,Jamshedpur (East Singhbhum)|Jharkhand,"+
+    "Jamtara|Jharkhand,Jamui|Bihar,Jaunpur|Uttar Pradesh,Jehanabad|Bihar,Jhabua|Madhya Pradesh,Jhalawar|Rajasthan,Jhansi|Uttar Pradesh,"+
+    "Jhunjhunu|Rajasthan,Jind|Haryana,Jodhpur|Rajasthan,Jorhat|Assam,Junagadh|Gujarat,Kadapa|Andhra Pradesh,Kaithal|Haryana,"+
+    "Kakinada (East Godavari)|Andhra Pradesh,Kalahandi|Odisha,Kamareddy|Telangana,Kamrup|Assam,Kanchipuram|Tamil Nadu,"+
+    "Kandhamal|Odisha,Kangra|Himachal Pradesh,Kanker|Chhattisgarh,Kannauj|Uttar Pradesh,Kannur|Kerala,Kanpur|Uttar Pradesh,"+
+    "Kanyakumari|Tamil Nadu,Kapurthala|Punjab,Karauli|Rajasthan,Kargil|Ladakh,Karimganj|Assam,Karimnagar|Telangana,Karnal|Haryana,"+
+    "Karur|Tamil Nadu,Kasaragod|Kerala,Kasganj|Uttar Pradesh,Katihar|Bihar,Katni|Madhya Pradesh,Kaushambi|Uttar Pradesh,"+
+    "Kendrapara|Odisha,Kendujhar (Keonjhar)|Odisha,Khagaria|Bihar,Khammam|Telangana,Khandwa|Madhya Pradesh,Khargone|Madhya Pradesh,"+
+    "Kheda (Nadiad)|Gujarat,Khordha|Odisha,Kishanganj|Bihar,Kishtwar|Jammu and Kashmir,Kochi (Ernakulam)|Kerala,Kohima|Nagaland,"+
+    "Kolar|Karnataka,Kolhapur|Maharashtra,Kolkata|West Bengal,Kollam|Kerala,Koppal|Karnataka,Koraput|Odisha,Korba|Chhattisgarh,"+
+    "Kota|Rajasthan,Kottayam|Kerala,Kozhikode (Calicut)|Kerala,Kullu|Himachal Pradesh,Kupwara|Jammu and Kashmir,Kurnool|Andhra Pradesh,"+
+    "Kurukshetra|Haryana,Kushinagar|Uttar Pradesh,Lakhimpur|Uttar Pradesh,Lakhimpur|Assam,Lakhisarai|Bihar,Latur|Maharashtra,"+
+    "Leh|Ladakh,Lohardaga|Jharkhand,Lucknow|Uttar Pradesh,Ludhiana|Punjab,Lunglei|Mizoram,Madhepura|Bihar,Madhubani|Bihar,"+
+    "Madurai|Tamil Nadu,Mahasamund|Chhattisgarh,Mahbubnagar|Telangana,Mainpuri|Uttar Pradesh,Malappuram|Kerala,Malda|West Bengal,"+
+    "Mandi|Himachal Pradesh,Mandla|Madhya Pradesh,Mandsaur|Madhya Pradesh,Mandya|Karnataka,Mangaluru (Dakshina Kannada)|Karnataka,"+
+    "Mansa|Punjab,Mathura|Uttar Pradesh,Mau|Uttar Pradesh,Mayurbhanj|Odisha,Meerut|Uttar Pradesh,Mehsana|Gujarat,Mirzapur|Uttar Pradesh,"+
+    "Moga|Punjab,Mohali (SAS Nagar)|Punjab,Mokokchung|Nagaland,Moradabad|Uttar Pradesh,Morbi|Gujarat,Morena|Madhya Pradesh,"+
+    "Mumbai|Maharashtra,Munger|Bihar,Murshidabad|West Bengal,Muzaffarnagar|Uttar Pradesh,Muzaffarpur|Bihar,Mysuru (Mysore)|Karnataka,"+
+    "Nadia|West Bengal,Nagaon|Assam,Nagapattinam|Tamil Nadu,Nagaur|Rajasthan,Nagpur|Maharashtra,Nainital|Uttarakhand,"+
+    "Nalanda (Bihar Sharif)|Bihar,Nalgonda|Telangana,Namakkal|Tamil Nadu,Nanded|Maharashtra,Nandurbar|Maharashtra,Narayanpur|Chhattisgarh,"+
+    "Narmada|Gujarat,Narsinghpur|Madhya Pradesh,Nashik|Maharashtra,Navsari|Gujarat,Nawada|Bihar,Nayagarh|Odisha,Neemuch|Madhya Pradesh,"+
+    "Nellore|Andhra Pradesh,New Delhi|Delhi,Nicobar|Andaman and Nicobar Islands,Nizamabad|Telangana,Noida (Gautam Buddh Nagar)|Uttar Pradesh,"+
+    "North Goa|Goa,North 24 Parganas|West Bengal,Nuh (Mewat)|Haryana,Ongole (Prakasam)|Andhra Pradesh,Osmanabad|Maharashtra,"+
+    "Pakur|Jharkhand,Palakkad|Kerala,Palamu|Jharkhand,Pali|Rajasthan,Palwal|Haryana,Panchkula|Haryana,Panchmahal|Gujarat,"+
+    "Panipat|Haryana,Panna|Madhya Pradesh,Panvel|Maharashtra,Patan|Gujarat,Pathanamthitta|Kerala,Pathankot|Punjab,Patiala|Punjab,"+
+    "Patna|Bihar,Perambalur|Tamil Nadu,Phagwara|Punjab,Pilibhit|Uttar Pradesh,Port Blair|Andaman and Nicobar Islands,"+
+    "Prakasam|Andhra Pradesh,Prayagraj (Allahabad)|Uttar Pradesh,Puducherry|Puducherry,Pudukkottai|Tamil Nadu,Pulwama|Jammu and Kashmir,"+
+    "Pune|Maharashtra,Purbi Champaran (East Champaran)|Bihar,Puri|Odisha,Purnia|Bihar,Purulia|West Bengal,Raebareli|Uttar Pradesh,"+
+    "Raichur|Karnataka,Raigad|Maharashtra,Raipur|Chhattisgarh,Raisen|Madhya Pradesh,Rajahmundry (East Godavari)|Andhra Pradesh,"+
+    "Rajgarh|Madhya Pradesh,Rajkot|Gujarat,Rajnandgaon|Chhattisgarh,Rajouri|Jammu and Kashmir,Rajsamand|Rajasthan,Ramanagara|Karnataka,"+
+    "Ramanathapuram|Tamil Nadu,Ramban|Jammu and Kashmir,Ramgarh|Jharkhand,Rampur|Uttar Pradesh,Ranchi|Jharkhand,Ratlam|Madhya Pradesh,"+
+    "Ratnagiri|Maharashtra,Rewa|Madhya Pradesh,Rewari|Haryana,Rohtak|Haryana,Rohtas (Sasaram)|Bihar,Rudraprayag|Uttarakhand,"+
+    "Rupnagar (Ropar)|Punjab,Sagar|Madhya Pradesh,Saharanpur|Uttar Pradesh,Saharsa|Bihar,Sahibganj|Jharkhand,Salem|Tamil Nadu,"+
+    "Samastipur|Bihar,Sambalpur|Odisha,Sambhal|Uttar Pradesh,Sangli|Maharashtra,Sangrur|Punjab,Satara|Maharashtra,Satna|Madhya Pradesh,"+
+    "Sawai Madhopur|Rajasthan,Sehore|Madhya Pradesh,Seoni|Madhya Pradesh,Shahdol|Madhya Pradesh,Shahjahanpur|Uttar Pradesh,"+
+    "Shajapur|Madhya Pradesh,Shimla|Himachal Pradesh,Shimoga (Shivamogga)|Karnataka,Shivpuri|Madhya Pradesh,Shopian|Jammu and Kashmir,"+
+    "Sibsagar (Sivasagar)|Assam,Siddharthnagar|Uttar Pradesh,Sidhi|Madhya Pradesh,Sikar|Rajasthan,Silchar (Cachar)|Assam,"+
+    "Siliguri (Darjeeling)|West Bengal,Simdega|Jharkhand,Sindhudurg|Maharashtra,Sirmaur|Himachal Pradesh,Sirohi|Rajasthan,"+
+    "Sirsa|Haryana,Sitamarhi|Bihar,Sitapur|Uttar Pradesh,Sivaganga|Tamil Nadu,Solan|Himachal Pradesh,Solapur|Maharashtra,"+
+    "Sonbhadra|Uttar Pradesh,Sonipat|Haryana,Sonitpur|Assam,South Goa|Goa,South 24 Parganas|West Bengal,Sri Ganganagar|Rajasthan,"+
+    "Srikakulam|Andhra Pradesh,Srinagar|Jammu and Kashmir,Surat|Gujarat,Surendranagar|Gujarat,Surguja|Chhattisgarh,"+
+    "Tarn Taran|Punjab,Tehri Garhwal|Uttarakhand,Thane|Maharashtra,Thanjavur|Tamil Nadu,Thiruvananthapuram|Kerala,"+
+    "Thoothukudi (Tuticorin)|Tamil Nadu,Thrissur|Kerala,Tikamgarh|Madhya Pradesh,Tinsukia|Assam,Tirap|Arunachal Pradesh,"+
+    "Tiruchirappalli (Trichy)|Tamil Nadu,Tirunelveli|Tamil Nadu,Tirupati (Chittoor)|Andhra Pradesh,Tiruppur|Tamil Nadu,"+
+    "Tiruvallur|Tamil Nadu,Tiruvannamalai|Tamil Nadu,Tonk|Rajasthan,Tumakuru (Tumkur)|Karnataka,Udaipur|Rajasthan,"+
+    "Udalguri|Assam,Udham Singh Nagar|Uttarakhand,Udupi|Karnataka,Ujjain|Madhya Pradesh,Ukhrul|Manipur,Una|Himachal Pradesh,"+
+    "Unnao|Uttar Pradesh,Uttar Dinajpur|West Bengal,Vadodara|Gujarat,Vaishali (Hajipur)|Bihar,Valsad|Gujarat,"+
+    "Varanasi|Uttar Pradesh,Vellore|Tamil Nadu,Vidisha|Madhya Pradesh,Vijayapura (Bijapur)|Karnataka,Vijayawada|Andhra Pradesh,"+
+    "Vikarabad|Telangana,Viluppuram|Tamil Nadu,Virudhunagar|Tamil Nadu,Visakhapatnam|Andhra Pradesh,Vizianagaram|Andhra Pradesh,"+
+    "Warangal|Telangana,Wardha|Maharashtra,Washim|Maharashtra,Wayanad|Kerala,West Champaran (Bettiah)|Bihar,West Godavari|Andhra Pradesh,"+
+    "West Kameng|Arunachal Pradesh,West Khasi Hills|Meghalaya,West Siang|Arunachal Pradesh,Yadgir|Karnataka,Yamunanagar|Haryana,Yavatmal|Maharashtra"
+  ).split(",").map(function(s){ var p=s.split("|"); return {city:p[0], state:p[1]}; });
+
+  var SCAM_RE = /processing fee|registration fee|training fee|starter kit|be your own boss|unlimited earning|wire transfer|send money|buy inventory|pyramid scheme|no experience necessary.{0,20}\$\$|investment opportunity|crypto trading opportunity|pay to apply|deposit required|western union|whatsapp only|telegram only/i;
+  var NEGATIVE_RE = /intern(ship)?|\bjunior\b|entry.level|\bstudent\b|test automation|\bqa\b|quality assurance/i;
+
+  // Known IT-services/consulting/BPO firms — used only as a best-effort "service-based" signal by company
+  // name match. Anything not on this list is treated as product-based; there's no API field for this anywhere.
+  var SERVICE_COMPANY_TERMS = [
+    "tata consultancy","\\btcs\\b","infosys","wipro","hcl","tech mahindra","cognizant","capgemini",
+    "ltimindtree","l&t infotech","mindtree","larsen & toubro infotech","mphasis","hexaware",
+    "persistent systems","zensar","birlasoft","coforge","niit technologies","cyient","sonata software",
+    "kpit","happiest minds","eclerx","wns global","wns\\b","genpact","firstsource","igate","syntel",
+    "mindteck","datamatics","accenture","deloitte","\\bey\\b","ernst & young","pricewaterhousecoopers",
+    "\\bpwc\\b","\\bkpmg\\b","dxc technology","\\batos\\b","ntt data","fujitsu","\\bunisys\\b","\\bcgi\\b",
+    "computer sciences corporation","thoughtworks","publicis sapient","\\bepam\\b","\\bluxoft\\b",
+    "globallogic","virtusa","softtek","quest global","cambridge technology","mastech",
+    "cybage","aptean","3i infotech","niit\\b","rolta","polaris consulting","gsp systems",
+    "value momentum","societe generale global solution centre","societe generale gsc"
+  ].map(function(t){ return new RegExp(t, "i"); });
+  function classifyCompanyType(companyName){
+    var name=String(companyName||"");
+    return SERVICE_COMPANY_TERMS.some(function(re){ return re.test(name); }) ? "service" : "product";
+  }
+  function matchesCompanyType(job, pref){
+    if(!pref || pref==="both") return true;
+    return classifyCompanyType(job.company)===pref;
+  }
+
+  var LS_PROFILE = "jobradar_profile_v1";
+  var LS_JOBS = "jobradar_jobs_v1";
+  var LS_APPLIED = "jobradar_applied_v2";
+  var LS_SAVED = "jobradar_saved_v1";
+  var LS_RESUME = "jobradar_resume_v1";
+
+  function loadProfile(){
+    try{
+      var raw = localStorage.getItem(LS_PROFILE);
+      if(raw) return JSON.parse(raw);
+    }catch(e){}
+    return {
+      name:"", email:"", phone:"", location:"", noticePeriod:"Immediate",
+      years:7, salaryFloorUSD:42000, region:"foreign_first", scamFilter:"strict", companyType:"both",
+      roles: defaultRoles(), modes: DEFAULT_MODES.slice(),
+      adzunaAppId:"", adzunaAppKey:"", joobleKey:"", opencorpKey:""
+    };
+  }
+  function saveProfile(p){ localStorage.setItem(LS_PROFILE, JSON.stringify(p)); }
+  function loadAppliedJobs(){ try{ return JSON.parse(localStorage.getItem(LS_APPLIED)||"{}"); }catch(e){ return {}; } }
+  function saveAppliedJobs(a){ localStorage.setItem(LS_APPLIED, JSON.stringify(a)); }
+  function loadSavedJobs(){ try{ return JSON.parse(localStorage.getItem(LS_SAVED)||"{}"); }catch(e){ return {}; } }
+  function saveSavedJobs(a){ localStorage.setItem(LS_SAVED, JSON.stringify(a)); }
+  function loadJobsCache(){ try{ return JSON.parse(localStorage.getItem(LS_JOBS)||"null"); }catch(e){ return null; } }
+  function saveJobsCache(d){ localStorage.setItem(LS_JOBS, JSON.stringify(d)); }
+
+  var profile = loadProfile();
+  var appliedJobs = loadAppliedJobs();
+  var savedJobs = loadSavedJobs();
+
+  function escapeHtml(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+  // ---------- profile UI: roles (search + chips + custom add) ----------
+  function isRoleSelected(label){
+    var norm=String(label||"").trim().toLowerCase();
+    return profile.roles.some(function(r){ return r.label.toLowerCase()===norm; });
+  }
+  function renderSelectedRoles(){
+    var el=document.getElementById("selectedRoles"); if(!el) return;
+    el.innerHTML="";
+    profile.roles.forEach(function(r){
+      var chip=document.createElement("div"); chip.className="selchip";
+      chip.innerHTML='<span>'+escapeHtml(r.label)+'</span>'+
+        '<button type="button" data-remove-role="'+escapeHtml(r.label)+'"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>';
+      el.appendChild(chip);
+    });
+  }
+  function addRole(roleObj){
+    if(isRoleSelected(roleObj.label)) return;
+    profile.roles.push(roleObj);
+    saveProfile(profile);
+    renderSelectedRoles(); renderRolePills(); renderPortals();
+  }
+  function removeRoleByLabel(label){
+    var norm=String(label||"").toLowerCase();
+    profile.roles = profile.roles.filter(function(r){ return r.label.toLowerCase()!==norm; });
+    saveProfile(profile);
+    renderSelectedRoles(); renderRolePills(); renderPortals();
+  }
+  document.addEventListener("click", function(e){
+    var rm=e.target.closest("[data-remove-role]");
+    if(rm) removeRoleByLabel(rm.getAttribute("data-remove-role"));
+  });
+
+  (function(){
+    var input=document.getElementById("roleSearchInput");
+    var box=document.getElementById("roleSuggestions");
+    if(!input || !box) return;
+
+    function render(query){
+      var q=query.trim().toLowerCase();
+      if(q.length<2){ box.hidden=true; box.innerHTML=""; return; }
+      var matches=ROLES_DB.filter(function(r){
+        if(isRoleSelected(r.label)) return false;
+        return r.label.toLowerCase().indexOf(q)>=0 || r.match.some(function(m){ return m.indexOf(q)>=0; });
+      }).slice(0,7);
+      box.innerHTML="";
+      matches.forEach(function(r){
+        var item=document.createElement("div"); item.className="suggest-item";
+        item.textContent=r.label;
+        item.addEventListener("mousedown", function(ev){ ev.preventDefault(); });
+        item.addEventListener("click", function(){ addRole(r); input.value=""; box.hidden=true; box.innerHTML=""; });
+        box.appendChild(item);
+      });
+      var typed=query.trim();
+      if(typed && !isRoleSelected(typed)){
+        var addItem=document.createElement("div"); addItem.className="suggest-add";
+        addItem.textContent="+ Add “"+typed+"” as a custom filter";
+        addItem.addEventListener("mousedown", function(ev){ ev.preventDefault(); });
+        addItem.addEventListener("click", function(){
+          addRole({label:typed, match:[typed.toLowerCase()]});
+          input.value=""; box.hidden=true; box.innerHTML="";
+        });
+        box.appendChild(addItem);
+      }
+      box.hidden=false;
+    }
+
+    var hideTimer=null;
+    input.addEventListener("input", function(){ if(hideTimer) clearTimeout(hideTimer); render(input.value); });
+    input.addEventListener("focus", function(){ if(hideTimer) clearTimeout(hideTimer); if(input.value.trim().length>=2) render(input.value); });
+    input.addEventListener("blur", function(){ hideTimer=setTimeout(function(){ box.hidden=true; }, 150); });
+    input.addEventListener("keydown", function(e){
+      if(e.key==="Enter"){
+        e.preventDefault();
+        var typed=input.value.trim();
+        if(!typed) return;
+        var exact=ROLES_DB.filter(function(r){ return r.label.toLowerCase()===typed.toLowerCase(); })[0];
+        addRole(exact || {label:typed, match:[typed.toLowerCase()]});
+        input.value=""; box.hidden=true; box.innerHTML="";
+      }
+    });
+  })();
+  function renderModeGrid(){
+    var el=document.getElementById("modeGrid"); el.innerHTML="";
+    MODES.forEach(function(m){
+      var id="mode_"+m.key;
+      var div=document.createElement("label"); div.className="checkitem";
+      div.innerHTML='<input type="checkbox" id="'+id+'" '+(profile.modes.indexOf(m.key)>=0?"checked":"")+'> '+escapeHtml(m.label);
+      el.appendChild(div);
+    });
+  }
+  function fillProfileForm(){
+    document.getElementById("p_name").value=profile.name||"";
+    document.getElementById("p_email").value=profile.email||"";
+    document.getElementById("p_phone").value=profile.phone||"";
+    document.getElementById("p_location").value=profile.location||"";
+    document.getElementById("p_years").value=profile.years||0;
+    document.getElementById("p_salary").value=profile.salaryFloorUSD||0;
+    (function(){
+      var presets=["Immediate","15 days","30 days","45 days","60 days","90 days"];
+      var np=profile.noticePeriod||"Immediate";
+      var sel=document.getElementById("p_notice");
+      var customWrap=document.getElementById("p_notice_custom_wrap");
+      var customInput=document.getElementById("p_notice_custom");
+      if(presets.indexOf(np)>=0){ sel.value=np; customWrap.hidden=true; customInput.value=""; }
+      else { sel.value="custom"; customWrap.hidden=false; customInput.value=np; }
+    })();
+    document.getElementById("p_region").value=profile.region||"foreign_first";
+    document.getElementById("p_scamfilter").value=profile.scamFilter||"strict";
+    document.getElementById("p_companytype").value=profile.companyType||"both";
+    document.getElementById("p_adzuna_id").value=profile.adzunaAppId||"";
+    document.getElementById("p_adzuna_key").value=profile.adzunaAppKey||"";
+    document.getElementById("p_jooble_key").value=profile.joobleKey||"";
+    document.getElementById("p_opencorp_key").value=profile.opencorpKey||"";
+    renderSelectedRoles(); renderModeGrid(); renderPortals(); renderRolePills();
+    var r=localStorage.getItem(LS_RESUME+"_name");
+    document.getElementById("resumeStatus").textContent = r ? ("Saved: "+r) : "No resume saved on this device yet.";
+  }
+
+  document.getElementById("saveProfileBtn").addEventListener("click", function(){
+    profile.name=document.getElementById("p_name").value;
+    profile.email=document.getElementById("p_email").value;
+    profile.phone=document.getElementById("p_phone").value;
+    profile.location=document.getElementById("p_location").value;
+    profile.years=parseInt(document.getElementById("p_years").value,10)||0;
+    (function(){
+      var sel=document.getElementById("p_notice").value;
+      profile.noticePeriod = sel==="custom" ? (document.getElementById("p_notice_custom").value.trim()||"Immediate") : sel;
+    })();
+    profile.salaryFloorUSD=parseInt(document.getElementById("p_salary").value,10)||0;
+    profile.region=document.getElementById("p_region").value;
+    profile.scamFilter=document.getElementById("p_scamfilter").value;
+    profile.companyType=document.getElementById("p_companytype").value;
+    profile.adzunaAppId=document.getElementById("p_adzuna_id").value.trim();
+    profile.adzunaAppKey=document.getElementById("p_adzuna_key").value.trim();
+    profile.joobleKey=document.getElementById("p_jooble_key").value.trim();
+    profile.opencorpKey=document.getElementById("p_opencorp_key").value.trim();
+    profile.modes = MODES.filter(function(m){ var cb=document.getElementById("mode_"+m.key); return cb && cb.checked; }).map(function(m){return m.key;});
+    if(!profile.roles.length) profile.roles = defaultRoles();
+    if(!profile.modes.length) profile.modes = DEFAULT_MODES.slice();
+    saveProfile(profile);
+    renderPortals();
+    activePill="all";
+    renderRolePills();
+    document.getElementById("saveStatus").textContent="Saved. Refresh to apply new filters.";
+    setTimeout(function(){ document.getElementById("saveStatus").textContent=""; }, 2500);
+  });
+
+  document.getElementById("p_notice").addEventListener("change", function(){
+    document.getElementById("p_notice_custom_wrap").hidden = (this.value!=="custom");
+  });
+
+  document.getElementById("resumeInput").addEventListener("change", function(e){
+    var file=e.target.files[0]; if(!file) return;
+    var reader=new FileReader();
+    reader.onload=function(){
+      try{
+        localStorage.setItem(LS_RESUME, reader.result);
+        localStorage.setItem(LS_RESUME+"_name", file.name);
+        document.getElementById("resumeStatus").textContent="Saved: "+file.name;
+      }catch(err){
+        document.getElementById("resumeStatus").textContent="Could not save (file may be too large).";
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // ---------- location autocomplete ----------
+  (function(){
+    var input=document.getElementById("p_location");
+    var box=document.getElementById("citySuggestions");
+    if(!input || !box) return;
+
+    function renderSuggestions(query){
+      var q=query.trim().toLowerCase();
+      if(q.length<2){ box.hidden=true; box.innerHTML=""; return; }
+      var matches=INDIA_PLACES.filter(function(p){
+        return p.city.toLowerCase().indexOf(q)===0 || p.city.toLowerCase().indexOf(" "+q)>=0;
+      }).slice(0,8);
+      if(!matches.length){ box.hidden=true; box.innerHTML=""; return; }
+      box.innerHTML="";
+      matches.forEach(function(p){
+        var item=document.createElement("div");
+        item.className="suggest-item";
+        item.innerHTML=escapeHtml(p.city)+'<div class="city-state">'+escapeHtml(p.state)+'</div>';
+        item.addEventListener("mousedown", function(ev){ ev.preventDefault(); }); // keep focus, avoid blur firing first
+        item.addEventListener("click", function(){
+          input.value=p.city+", "+p.state;
+          box.hidden=true; box.innerHTML="";
+        });
+        box.appendChild(item);
+      });
+      box.hidden=false;
+    }
+
+    var hideTimer=null;
+    input.addEventListener("input", function(){ if(hideTimer) clearTimeout(hideTimer); renderSuggestions(input.value); });
+    input.addEventListener("focus", function(){ if(hideTimer) clearTimeout(hideTimer); if(input.value.trim().length>=2) renderSuggestions(input.value); });
+    input.addEventListener("blur", function(){ hideTimer=setTimeout(function(){ box.hidden=true; }, 150); });
+  })();
+
+  // ---------- bottom nav ----------
+  document.querySelectorAll(".navitem").forEach(function(item){
+    item.addEventListener("click", function(){
+      document.querySelectorAll(".navitem").forEach(function(x){x.classList.remove("active");});
+      document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("active");});
+      item.classList.add("active");
+      document.getElementById("panel-"+item.getAttribute("data-tab")).classList.add("active");
+      if(item.getAttribute("data-tab")==="myjobs") renderMyJobs();
+    });
+  });
+
+  // ---------- my jobs (saved / applied segmented) ----------
+  document.querySelectorAll(".segbtn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll(".segbtn").forEach(function(x){x.classList.remove("active");});
+      btn.classList.add("active");
+      var seg=btn.getAttribute("data-seg");
+      document.getElementById("savedList").style.display = seg==="saved" ? "" : "none";
+      document.getElementById("appliedList").style.display = seg==="applied" ? "" : "none";
+    });
+  });
+  function renderMyJobs(){
+    var savedEl=document.getElementById("savedList");
+    var appliedEl=document.getElementById("appliedList");
+    var savedArr=Object.values(savedJobs).sort(function(a,b){ return new Date(b.savedAt)-new Date(a.savedAt); });
+    var appliedArr=Object.values(appliedJobs).sort(function(a,b){ return new Date(b.appliedAt)-new Date(a.appliedAt); });
+    savedEl.innerHTML=""; appliedEl.innerHTML="";
+    if(!savedArr.length) savedEl.innerHTML='<div class="empty">Nothing saved yet — tap the bookmark icon on any job.</div>';
+    else savedArr.forEach(function(j){ savedEl.appendChild(jobCard(j)); });
+    if(!appliedArr.length) appliedEl.innerHTML='<div class="empty">Nothing marked applied yet.</div>';
+    else appliedArr.forEach(function(j){ appliedEl.appendChild(jobCard(j)); });
+  }
+
+  // ---------- portals (deep-links only, no scraping) ----------
+  var PORTALS = [
+    {name:"Naukri", note:"Jobs across industries in India", build:function(q,loc){ return "https://www.naukri.com/"+slug(q)+"-jobs?k="+enc(q); }},
+    {name:"LinkedIn Jobs", note:"Jobs, recruiters and referrals", build:function(q,loc){ return "https://www.linkedin.com/jobs/search/?keywords="+enc(q)+"&location="+enc(loc); }},
+    {name:"Indeed India", note:"Broad job search", build:function(q,loc){ return "https://in.indeed.com/jobs?q="+enc(q)+"&l="+enc(loc); }},
+    {name:"foundit", note:"IT and other professional roles", build:function(q,loc){ return "https://www.foundit.in/srp/results?query="+enc(q); }},
+    {name:"Shine", note:"Jobs across industries", build:function(q,loc){ return "https://www.shine.com/job-search/"+slug(q)+"-jobs"; }},
+    {name:"TimesJobs", note:"Jobs across industries", build:function(q,loc){ return "https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&txtKeywords="+enc(q); }},
+    {name:"Glassdoor Jobs", note:"Jobs alongside company reviews", build:function(q,loc){ return "https://www.glassdoor.co.in/Job/jobs.htm?sc.keyword="+enc(q); }},
+    {name:"Cutshort", note:"Tech and startup roles", build:function(q,loc){ return "https://cutshort.io/jobs?q="+enc(q); }},
+    {name:"Instahyre", note:"Tech and product companies", build:function(q,loc){ return "https://www.instahyre.com/candidate/opportunities/"; }},
+    {name:"Hirist", note:"IT roles", build:function(q,loc){ return "https://www.hirist.tech/search?q="+enc(q); }},
+    {name:"Wellfound", note:"Startup jobs", build:function(q,loc){ return "https://wellfound.com/jobs?query="+enc(q); }},
+    {name:"iimjobs", note:"Management and experienced roles", build:function(q,loc){ return "https://www.iimjobs.com/k/"+slug(q)+"-jobs"; }},
+    {name:"Internshala", note:"Internships and fresher jobs", build:function(q,loc){ return "https://internshala.com/jobs/keywords-"+slug(q)+"/"; }},
+    {name:"Freshersworld", note:"Entry-level jobs", build:function(q,loc){ return "https://www.freshersworld.com/jobs/jobsearch/"+slug(q)+"-jobs"; }},
+    {name:"Apna", note:"Local and entry-level jobs", build:function(q,loc){ return "https://apna.co/jobs"; }},
+    {name:"WorkIndia", note:"Local jobs", build:function(q,loc){ return "https://www.workindia.in/"; }},
+    {name:"National Career Service", note:"Indian government and private-sector listings", build:function(q,loc){ return "https://www.ncs.gov.in/"; }}
+  ];
+  function slug(s){ return String(s||"").toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,""); }
+  function enc(s){ return encodeURIComponent(s||""); }
+
+  function renderPortals(){
+    var el=document.getElementById("portalList"); if(!el) return;
+    el.innerHTML="";
+    var q = primaryRoleQuery();
+    var loc = profile.region==="india_only" ? (profile.location||"India") : "Remote";
+    PORTALS.forEach(function(p){
+      var url = p.build(q, loc);
+      var div=document.createElement("div"); div.className="card";
+      div.innerHTML =
+        '<div class="job-title">'+escapeHtml(p.name)+'</div>'+
+        '<div class="job-company">'+escapeHtml(p.note)+'</div>'+
+        '<div class="actions"><a class="applylink" href="'+escapeHtml(url)+'" target="_blank" rel="noopener">'+
+        '<button class="btn primary small">Open search: '+escapeHtml(q)+'</button></a></div>';
+      el.appendChild(div);
+    });
+  }
+
+  // ---------- fetch helpers ----------
+  function getText(url){
+    return fetch(url, {headers:{"Accept":"*/*"}}).then(function(r){ return r.text(); });
+  }
+  function getJSON(url){ return getText(url).then(JSON.parse); }
+
+  function scoreRegion(text){
+    var t=(text||"").toLowerCase();
+    if(/india/.test(t) && !/(usa|u\.s\.|uk|canada|europe|worldwide|anywhere|global)/.test(t)) return {tag:"India", score:1};
+    if(/worldwide|anywhere|global|any location|remote - global/.test(t)) return {tag:"Worldwide", score:3};
+    if(/usa|u\.s\.|united states|canada|\buk\b|united kingdom|europe|\beu\b|germany|australia|new zealand|singapore|uae|dubai|netherlands|ireland/.test(t)) return {tag:"Foreign (region-limited)", score:2};
+    if(!t) return {tag:"Unspecified", score:1};
+    return {tag: t.length<40 ? t : "Other", score:1};
+  }
+  function parseSalaryUSD(text){
+    if(!text) return null;
+    var m=String(text).match(/\$\s*(\d{2,3}(?:,\d{3})?)\s*[kK,]/g);
+    if(!m) return null;
+    var nums=m.map(function(s){return parseInt(s.replace(/[^\d]/g,""),10);}).map(function(n){return n<1000?n*1000:n;}).filter(function(n){return n>8000 && n<1000000;});
+    if(!nums.length) return null;
+    return Math.round(nums.reduce(function(a,b){return a+b;},0)/nums.length);
+  }
+  function decodeEntities(s){
+    return (s||"").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&nbsp;/g," ");
+  }
+  function stripTags(s){ return decodeEntities(s||"").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim(); }
+
+  function escapeRegex(s){ return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function titleRegexFromRoles(roles){
+    if(!roles || !roles.length) return /./; // nothing selected -> match everything
+    var terms=[];
+    roles.forEach(function(r){
+      (r.match && r.match.length ? r.match : [r.label.toLowerCase()]).forEach(function(m){
+        var esc=escapeRegex(m);
+        terms.push(m.length<=4 ? "\\b"+esc+"\\b" : esc);
+      });
+    });
+    return new RegExp(terms.join("|"), "i");
+  }
+
+  function isFake(job, scamFilterOn){
+    if(!scamFilterOn) return false;
+    if(!job.company || !job.url || !job.title) return true;
+    var text = (job.title+" "+(job.descriptionText||"")).toLowerCase();
+    return SCAM_RE.test(text);
+  }
+
+  function fromRemoteOK(titleRe){
+    return getJSON("https://remoteok.com/api").then(function(data){
+      var jobs=(data||[]).filter(function(d){return d.id;});
+      return jobs.filter(function(d){ return !NEGATIVE_RE.test(d.position||"") && titleRe.test(d.position||""); })
+        .map(function(d){
+          var region=scoreRegion(d.location);
+          var salaryUSD = d.salary_min>5000 ? Math.round((d.salary_min+(d.salary_max||d.salary_min))/2) : null;
+          return {
+            id:"remoteok_"+d.id, source:"RemoteOK", title:d.position, company:d.company,
+            url:d.url||d.apply_url, location:d.location||"Remote",
+            regionTag:region.tag, regionScore:region.score,
+            salaryUSD:salaryUSD, salaryText: salaryUSD ? ("$"+salaryUSD.toLocaleString()+"/yr (est.)") : "Not listed",
+            descriptionText: stripTags(d.description||"").slice(0,400),
+            postedAt:d.date||null, applyEmail:null, companyLogo:d.company_logo||null
+          };
+        });
+    }).catch(function(e){ console.error("RemoteOK failed", e); return []; });
+  }
+
+  function fromRemotive(titleRe){
+    return getJSON("https://remotive.com/api/remote-jobs").then(function(data){
+      var jobs=(data&&data.jobs)||[];
+      return jobs.filter(function(d){ return !NEGATIVE_RE.test(d.title||"") && titleRe.test(d.title||""); })
+        .map(function(d){
+          var region=scoreRegion(d.candidate_required_location);
+          var salaryUSD=parseSalaryUSD(d.salary);
+          var descText=stripTags(d.description||"");
+          var emailMatch=descText.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+          return {
+            id:"remotive_"+d.id, source:"Remotive", title:d.title, company:d.company_name, url:d.url,
+            location:d.candidate_required_location||"Remote", regionTag:region.tag, regionScore:region.score,
+            salaryUSD:salaryUSD, salaryText: d.salary || (salaryUSD?("$"+salaryUSD.toLocaleString()+"/yr (est.)"):"Not listed"),
+            descriptionText: descText.slice(0,400),
+            postedAt:d.publication_date||null, applyEmail: emailMatch?emailMatch[0]:null
+          };
+        });
+    }).catch(function(e){ console.error("Remotive failed", e); return []; });
+  }
+
+  function fromArbeitnow(titleRe){
+    return getJSON("https://www.arbeitnow.com/api/job-board-api").then(function(data){
+      var jobs=(data&&data.data)||[];
+      return jobs.filter(function(d){ return d.remote && !NEGATIVE_RE.test(d.title||"") && titleRe.test(d.title||""); })
+        .map(function(d){
+          var region=scoreRegion(d.location);
+          return {
+            id:"arbeitnow_"+(d.slug||d.url), source:"Arbeitnow", title:d.title, company:d.company_name, url:d.url,
+            location:d.location||"Remote", regionTag:region.tag, regionScore:region.score,
+            salaryUSD:null, salaryText:"Not listed",
+            descriptionText: stripTags(d.description||"").slice(0,400),
+            postedAt: d.created_at ? new Date(d.created_at*1000).toISOString() : null, applyEmail:null
+          };
+        });
+    }).catch(function(e){ console.error("Arbeitnow failed", e); return []; });
+  }
+
+  function fromHimalayas(titleRe){
+    var pages=[0,100,200,300,400,500,600,700,800,900];
+    return Promise.all(pages.map(function(offset){
+      return getJSON("https://himalayas.app/jobs/api?limit=100&offset="+offset).catch(function(){ return {jobs:[]}; });
+    })).then(function(results){
+      var all=[];
+      results.forEach(function(r){ all=all.concat((r&&r.jobs)||[]); });
+      return all.filter(function(d){ return !NEGATIVE_RE.test(d.title||"") && titleRe.test(d.title||""); })
+        .map(function(d){
+          var locText=(d.locationRestrictions||[]).join(", ");
+          var region=scoreRegion(locText);
+          var salaryUSD=null;
+          if(d.currency==="USD" && d.maxSalary){
+            var mult = d.salaryPeriod==="hourly"?2080:(d.salaryPeriod==="monthly"?12:1);
+            salaryUSD=Math.round(((d.minSalary||d.maxSalary)+d.maxSalary)/2*mult);
+          }
+          return {
+            id:"himalayas_"+(d.companySlug||d.companyName)+"_"+(d.title||"").slice(0,24),
+            source:"Himalayas", title:d.title, company:d.companyName,
+            url: d.companySlug ? ("https://himalayas.app/companies/"+d.companySlug) : "https://himalayas.app/jobs",
+            location: locText || "Remote (unrestricted)",
+            regionTag: locText?region.tag:"Worldwide", regionScore: locText?region.score:3,
+            salaryUSD:salaryUSD, salaryText: salaryUSD?("$"+salaryUSD.toLocaleString()+"/yr (est.)"):"Not listed",
+            descriptionText: stripTags(d.description||"").slice(0,400),
+            postedAt:null, applyEmail:null, companyLogo:d.companyLogo||null
+          };
+        });
+    }).catch(function(e){ console.error("Himalayas failed", e); return []; });
+  }
+
+  function fromWeWorkRemotely(titleRe){
+    function parseFeed(xml){
+      var items=xml.split("<item>").slice(1).map(function(s){return s.split("</item>")[0];});
+      return items.map(function(item){
+        function grab(tag){
+          var m=item.match(new RegExp("<"+tag+">([\\s\\S]*?)</"+tag+">"));
+          return m ? decodeEntities(m[1].replace(/^<!\[CDATA\[/,"").replace(/\]\]>$/,"").trim()) : "";
+        }
+        var rawTitle=grab("title");
+        var parts=rawTitle.split(":");
+        var company=parts.shift();
+        var title=parts.length ? parts.join(":").trim() : rawTitle;
+        var region=grab("region")||"";
+        var link=grab("link")||grab("guid");
+        var descText=stripTags(grab("description"));
+        var salaryMatch=descText.match(/\$[\d,]+(?:\s*(?:to|-)\s*\$?[\d,]+)?\s*(?:per year|\/year|annually)?/i);
+        var salaryUSD=parseSalaryUSD(salaryMatch?salaryMatch[0]:descText);
+        var scored=scoreRegion(region);
+        return {
+          id:"wwr_"+link, source:"We Work Remotely", title:title||rawTitle, company:company||"Unknown", url:link,
+          location:region||"Remote",
+          regionTag: /anywhere/i.test(region) ? "Worldwide" : scored.tag,
+          regionScore: /anywhere/i.test(region) ? 3 : scored.score,
+          salaryUSD:salaryUSD, salaryText: salaryMatch?salaryMatch[0]:(salaryUSD?("$"+salaryUSD.toLocaleString()+"/yr (est.)"):"Not listed"),
+          descriptionText: descText.slice(0,400),
+          postedAt: grab("pubDate")||null, applyEmail:null
+        };
+      });
+    }
+    return getText("https://weworkremotely.com/remote-jobs.rss").then(parseFeed).then(function(list){
+      return list.filter(function(j){ return !NEGATIVE_RE.test(j.title) && titleRe.test(j.title); });
+    }).catch(function(e){ console.error("We Work Remotely failed", e); return []; });
+  }
+
+  function fromJobicy(titleRe){
+    function mapJob(d){
+      var locText = d.jobGeo || "Remote";
+      var region = scoreRegion(locText);
+      var salaryUSD = (d.annualSalaryMin && d.salaryCurrency==="USD") ? Math.round((d.annualSalaryMin+(d.annualSalaryMax||d.annualSalaryMin))/2) : null;
+      return {
+        id:"jobicy_"+d.id, source:"Jobicy", title:d.jobTitle, company:d.companyName, url:d.url,
+        location: locText, regionTag: /world|anywhere|global/i.test(locText) ? "Worldwide" : region.tag,
+        regionScore: /world|anywhere|global/i.test(locText) ? 3 : region.score,
+        salaryUSD:salaryUSD, salaryText: salaryUSD?("$"+salaryUSD.toLocaleString()+"/yr (est.)"):"Not listed",
+        descriptionText: stripTags(d.jobExcerpt||"").slice(0,400),
+        postedAt: d.pubDate||null, applyEmail:null, companyLogo:d.companyLogo||null
+      };
+    }
+    return getJSON("https://jobicy.com/api/v2/remote-jobs?count=100").then(function(data){
+      var jobs=(data&&data.jobs)||[];
+      return jobs.filter(function(d){ return !NEGATIVE_RE.test(d.jobTitle||"") && titleRe.test(d.jobTitle||""); }).map(mapJob);
+    }).catch(function(e){ console.error("Jobicy failed", e); return []; });
+  }
+
+  function fromWorkingNomads(titleRe){
+    return getJSON("https://www.workingnomads.com/api/exposed_jobs/").then(function(data){
+      var jobs=data||[];
+      return jobs.filter(function(d){ return !NEGATIVE_RE.test(d.title||"") && titleRe.test(d.title||""); })
+        .map(function(d){
+          var region=scoreRegion(d.location||"");
+          return {
+            id:"workingnomads_"+(d.url||d.title+d.company_name), source:"Working Nomads", title:d.title,
+            company:d.company_name||"Unknown", url:d.url,
+            location: d.location || "Remote", regionTag: d.location?region.tag:"Worldwide", regionScore: d.location?region.score:3,
+            salaryUSD:null, salaryText:"Not listed",
+            descriptionText: stripTags(d.description||"").slice(0,400),
+            postedAt: d.pub_date||null, applyEmail:null
+          };
+        });
+    }).catch(function(e){ console.error("Working Nomads failed", e); return []; });
+  }
+
+  function fromAdzuna(query){
+    if(!profile.adzunaAppId || !profile.adzunaAppKey) return Promise.resolve([]);
+    var countries=["in","gb","us"];
+    return Promise.all(countries.map(function(country){
+      var url="https://api.adzuna.com/v1/api/jobs/"+country+"/search/1?app_id="+encodeURIComponent(profile.adzunaAppId)+
+        "&app_key="+encodeURIComponent(profile.adzunaAppKey)+"&results_per_page=20&what="+encodeURIComponent(query)+"&content-type=application/json";
+      return getJSON(url).then(function(data){
+        return (data.results||[]).map(function(d){
+          var locText=(d.location&&d.location.display_name)||country.toUpperCase();
+          var region=scoreRegion(locText);
+          var salaryUSD = d.salary_min ? Math.round((d.salary_min+(d.salary_max||d.salary_min))/2) : null;
+          return {
+            id:"adzuna_"+d.id, source:"Adzuna", title:d.title, company:(d.company&&d.company.display_name)||"Unknown",
+            url:d.redirect_url, location:locText, regionTag:region.tag, regionScore:region.score,
+            salaryUSD:salaryUSD, salaryText: salaryUSD?("$"+salaryUSD.toLocaleString()+"/yr (est.)"):"Not listed",
+            descriptionText: stripTags(d.description||"").slice(0,400),
+            postedAt: d.created||null, applyEmail:null
+          };
+        });
+      }).catch(function(e){ console.error("Adzuna ("+country+") failed", e); return []; });
+    })).then(function(lists){ return [].concat.apply([], lists); });
+  }
+
+  function fromJooble(query){
+    if(!profile.joobleKey) return Promise.resolve([]);
+    return fetch("https://jooble.org/api/"+encodeURIComponent(profile.joobleKey), {
+      method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({keywords:query, location:""})
+    }).then(function(r){ return r.json(); }).then(function(data){
+      return (data.jobs||[]).map(function(d){
+        var region=scoreRegion(d.location||"");
+        var salaryUSD=parseSalaryUSD(d.salary);
+        return {
+          id:"jooble_"+(d.id||d.link), source:"Jooble", title:d.title, company:d.company||"Unknown", url:d.link,
+          location:d.location||"Remote", regionTag:region.tag, regionScore:region.score,
+          salaryUSD:salaryUSD, salaryText: d.salary||(salaryUSD?("$"+salaryUSD.toLocaleString()+"/yr (est.)"):"Not listed"),
+          descriptionText: stripTags(d.snippet||"").slice(0,400),
+          postedAt: d.updated||null, applyEmail:null
+        };
+      });
+    }).catch(function(e){ console.error("Jooble failed", e); return []; });
+  }
+
+  // ---------- company search (Greenhouse / Lever only — the only ATS's with genuinely public APIs) ----------
+  function parseCompanySlug(input){
+    var s=(input||"").trim();
+    if(!s) return null;
+    if(!/^https?:\/\//i.test(s)) s="https://"+s;
+    var host;
+    try{ host=new URL(s).hostname; }catch(e){ return null; }
+    if(!host || host.indexOf(".")<0) return null;
+    host=host.replace(/^www\./,"");
+    var name=host.split(".")[0];
+    if(!name) return null;
+    return { host:host, slug:name.toLowerCase().replace(/[^a-z0-9]/g,"") };
+  }
+
+  function fromGreenhouseCompany(slug){
+    return fetch("https://boards-api.greenhouse.io/v1/boards/"+slug+"/jobs").then(function(r){
+      if(!r.ok) throw new Error("not found");
+      return r.json();
+    }).then(function(data){
+      if(!data || !Array.isArray(data.jobs)) throw new Error("unexpected shape");
+      return data.jobs;
+    }).then(function(jobs){
+      return jobs.map(function(d){
+        var locText=(d.location&&d.location.name)||"Remote";
+        var region=scoreRegion(locText);
+        return {
+          id:"gh_"+d.id, source:"Greenhouse", title:d.title, company:slug, url:d.absolute_url,
+          location:locText, regionTag:region.tag, regionScore:region.score,
+          salaryUSD:null, salaryText:"Not listed",
+          descriptionText: stripTags(d.content||"").slice(0,400),
+          postedAt: d.updated_at||null, applyEmail:null
+        };
+      });
+    }).catch(function(){ return null; }); // null = board not found / unreachable, distinct from [] = found but empty
+  }
+
+  function fromLeverCompany(slug){
+    return fetch("https://api.lever.co/v0/postings/"+slug+"?mode=json").then(function(r){
+      if(!r.ok) throw new Error("not found");
+      return r.json();
+    }).then(function(data){
+      if(!Array.isArray(data)) throw new Error("unexpected shape");
+      return data.map(function(d){
+        var locText=(d.categories&&d.categories.location)||"Remote";
+        var region=scoreRegion(locText);
+        return {
+          id:"lever_"+d.id, source:"Lever", title:d.text, company:slug, url:d.hostedUrl,
+          location:locText, regionTag:region.tag, regionScore:region.score,
+          salaryUSD:null, salaryText:"Not listed",
+          descriptionText: stripTags(d.descriptionPlain||d.description||"").slice(0,400),
+          postedAt: d.createdAt ? new Date(d.createdAt).toISOString() : null, applyEmail:null
+        };
+      });
+    }).catch(function(){ return null; });
+  }
+
+  function renderCompanyResults(list){
+    var el=document.getElementById("companyResults"); el.innerHTML="";
+    list.forEach(function(j){ el.appendChild(jobCard(j)); });
+  }
+
+  function searchCompany(){
+    var statusEl=document.getElementById("companyStatus");
+    var resultsEl=document.getElementById("companyResults");
+    var btn=document.getElementById("companySearchBtn");
+    var raw=document.getElementById("companyUrlInput").value;
+    var parsed=parseCompanySlug(raw);
+    resultsEl.innerHTML="";
+    if(!parsed){ statusEl.textContent="Enter a correct URL (e.g. stripe.com)."; return; }
+
+    statusEl.textContent="Searching "+parsed.host+"…";
+    btn.disabled=true;
+    var titleRe=titleRegexFromRoles(profile.roles);
+    var scamOn = profile.scamFilter!=="off";
+
+    Promise.all([fromGreenhouseCompany(parsed.slug), fromLeverCompany(parsed.slug)]).then(function(results){
+      var gh=results[0], lever=results[1];
+      if(gh===null && lever===null){
+        statusEl.textContent="I can't get inside this portal — "+parsed.host+" doesn't appear to run on Greenhouse or Lever (the only career-page systems with a public search API). Try their careers page directly, or check the Portals tab.";
+        return;
+      }
+      var all=[].concat(gh||[], lever||[]);
+      var matched=all.filter(function(j){
+        return !NEGATIVE_RE.test(j.title||"") && titleRe.test(j.title||"") && !isFake(j, scamOn) &&
+          matchesExperience(j, profile.years) && matchesSalaryFloor(j, profile.salaryFloorUSD) &&
+          matchesCompanyType(j, profile.companyType);
+      });
+      if(!matched.length){
+        statusEl.textContent="No current jobs for your profile at "+parsed.host+" right now (checked "+all.length+" open role"+(all.length===1?"":"s")+" total).";
+        return;
+      }
+      matched.forEach(function(j){ j.applied=!!appliedJobs[j.id]; j.saved=!!savedJobs[j.id]; j.companyDomain=parsed.host; });
+      statusEl.textContent="Found "+matched.length+" match"+(matched.length===1?"":"es")+" at "+parsed.host+":";
+      renderCompanyResults(matched);
+    }).catch(function(){
+      statusEl.textContent="I can't get inside this portal — something went wrong reaching "+parsed.host+". Check your connection and try again.";
+    }).finally(function(){
+      btn.disabled=false;
+    });
+  }
+  document.getElementById("companySearchBtn").addEventListener("click", searchCompany);
+  document.getElementById("companyUrlInput").addEventListener("keydown", function(e){ if(e.key==="Enter") searchCompany(); });
+
+  function matchesWorkMode(job, modes){
+    var text=(job.location+" "+(job.descriptionText||"")).toLowerCase();
+    var wantsRemote = modes.indexOf("remote")>=0;
+    var wantsHybrid = modes.indexOf("hybrid")>=0;
+    var wantsOnsite = modes.indexOf("onsite")>=0;
+    var isHybrid=/hybrid/.test(text);
+    var isOnsite=/on-site|onsite|in-office|in office/.test(text) && !/remote/.test(text);
+    if(isHybrid) return wantsHybrid;
+    if(isOnsite) return wantsOnsite;
+    return wantsRemote; // default: these boards are remote-first, so untagged = remote
+  }
+
+  function matchesRegionPref(job, regionPref){
+    if(regionPref==="all") return true;
+    if(regionPref==="india_only") return job.regionTag==="India";
+    if(regionPref==="foreign_only") return job.regionTag!=="India";
+    return true; // foreign_first: show all, ranking already prioritizes foreign
+  }
+
+  // Seniority tier from title text: 0=junior/intern, 1=mid/unspecified, 2=senior/lead, 3=staff/principal, 4=director+
+  function seniorityTierOfTitle(title){
+    var t=String(title||"").toLowerCase();
+    if(/\bdirector\b|\bvp\b|\bvice president\b|\bhead of\b|\bchief\b/.test(t)) return 4;
+    if(/\bstaff\b|\bprincipal\b/.test(t)) return 3;
+    if(/\bsenior\b|\bsr\.?\b|\blead\b/.test(t)) return 2;
+    if(/\bjunior\b|entry.level|\bassociate\b|\bgraduate\b|\bintern\b|\btrainee\b/.test(t)) return 0;
+    return 1;
+  }
+  function matchesExperience(job, years){
+    var tier=seniorityTierOfTitle(job.title);
+    var y=Number(years)||0;
+    if(y<=3) return tier<=2;   // 0-3y: keep junior..senior, drop staff/principal/director
+    if(y<=6) return tier<=3;   // 4-6y: keep junior..staff, drop director+
+    return tier>=1;            // 7y+: keep mid and up, drop pure junior/intern postings
+  }
+  function matchesSalaryFloor(job, floorUSD){
+    var floor=Number(floorUSD)||0;
+    if(floor<=0) return true;
+    if(job.salaryUSD==null) return true; // unknown salary: don't exclude, just ranked lower
+    return job.salaryUSD>=floor;
+  }
+
+  function primaryRoleQuery(){
+    var first = profile.roles && profile.roles[0];
+    return first ? first.label.replace(/\s*\(.*?\)\s*/g,"").trim() : "Jobs";
+  }
+
+  function fetchAllJobs(){
+    var titleRe = titleRegexFromRoles(profile.roles);
+    var query = primaryRoleQuery();
+    return Promise.all([
+      fromRemoteOK(titleRe), fromRemotive(titleRe), fromArbeitnow(titleRe), fromHimalayas(titleRe), fromWeWorkRemotely(titleRe),
+      fromJobicy(titleRe), fromWorkingNomads(titleRe), fromAdzuna(query), fromJooble(query)
+    ]).then(function(lists){
+      var names=["RemoteOK","Remotive","Arbeitnow","Himalayas","We Work Remotely","Jobicy","Working Nomads","Adzuna","Jooble"];
+      var counts={};
+      names.forEach(function(n,i){
+        var isOptional = (n==="Adzuna" && !profile.adzunaAppId) || (n==="Jooble" && !profile.joobleKey);
+        if(!isOptional) counts[n]=lists[i].length;
+      });
+      var all=[].concat.apply([], lists);
+
+      var seen={};
+      all=all.filter(function(j){
+        var key=(j.title+"|"+j.company).toLowerCase().replace(/\s+/g," ").trim();
+        if(seen[key]) return false;
+        seen[key]=true; return true;
+      });
+
+      var scamOn = profile.scamFilter!=="off";
+      all=all.filter(function(j){ return !isFake(j, scamOn); });
+      all=all.filter(function(j){ return matchesWorkMode(j, profile.modes); });
+      all=all.filter(function(j){ return matchesRegionPref(j, profile.region); });
+      all=all.filter(function(j){ return matchesExperience(j, profile.years); });
+      all=all.filter(function(j){ return matchesSalaryFloor(j, profile.salaryFloorUSD); });
+      all=all.filter(function(j){ return matchesCompanyType(j, profile.companyType); });
+
+      all.forEach(function(j){
+        var rank=j.regionScore*10;
+        if(j.salaryUSD) rank += j.salaryUSD>=profile.salaryFloorUSD ? 5 : -3;
+        if(j.postedAt){
+          var days=(Date.now()-new Date(j.postedAt).getTime())/86400000;
+          if(days>=0 && days<3) rank+=3; else if(days>=0 && days<7) rank+=1;
+        }
+        j.rank=rank;
+        j.applied = !!appliedJobs[j.id];
+        j.saved = !!savedJobs[j.id];
+      });
+      all.sort(function(x,y){ return y.rank-x.rank; });
+
+      var result={ generatedAt:new Date().toISOString(), sourceCounts:counts, total:all.length, jobs:all };
+      saveJobsCache(result);
+      return result;
+    });
+  }
+
+  // ---------- rendering ----------
+  function fmtRelative(iso){
+    if(!iso) return "";
+    var d=new Date(iso); if(isNaN(d)) return "";
+    var days=Math.floor((Date.now()-d.getTime())/86400000);
+    if(days<=0) return "today"; if(days===1) return "1 day ago";
+    if(days<30) return days+" days ago"; return d.toLocaleDateString();
+  }
+  function regionClass(tag){
+    if(tag==="Worldwide") return "worldwide";
+    if(tag && tag.indexOf("Foreign")===0) return "foreign";
+    if(tag==="India") return "india"; return "other";
+  }
+  function regionChipClass(tag){
+    if(tag==="Worldwide") return "chip region-worldwide";
+    if(tag && tag.indexOf("Foreign")===0) return "chip region-foreign";
+    return "chip";
+  }
+  function draftCoverLetter(job){
+    var roleLabel = (profile.roles && profile.roles[0]) ? profile.roles[0].label.replace(/\s*\(.*?\)\s*/g,"").trim() : "professional";
+    var noticeLine = profile.noticePeriod ? ("Notice period: "+profile.noticePeriod+".\n") : "";
+    return "Hi,\n\nI'm reaching out about the "+job.title+" role at "+job.company+". I'm a "+roleLabel+" with "+
+      (profile.years||0)+"+ years of experience.\n\n"+
+      noticeLine+
+      "Resume attached. Happy to talk whenever works for you.\n\nThanks,\n"+profile.name+"\n"+profile.phone+" | "+profile.email;
+  }
+  var BADGE_COLORS = ["#5B6EF5","#FF5C8A","#FFB443","#3CE8C4","#8B5CF6","#3EC6E0","#FF7A42","#5BD16B"];
+  function companyColor(name){
+    var s=String(name||"?"); var h=0;
+    for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; }
+    return BADGE_COLORS[h % BADGE_COLORS.length];
+  }
+  function companyInitial(name){ var s=String(name||"?").trim(); return (s.charAt(0)||"?").toUpperCase(); }
+
+  var jobsById={};
+  function jobCard(job){
+    jobsById[job.id]=job;
+    var div=document.createElement("div"); div.className="card";
+    var quick = job.applyEmail ? (
+      '<div class="quickapply"><div><strong>Quick apply:</strong> lists <code class="email">'+escapeHtml(job.applyEmail)+'</code> — copy the address and draft below into your email app.</div>'+
+      '<textarea readonly id="draft_'+job.id+'">'+escapeHtml(draftCoverLetter(job))+'</textarea>'+
+      '<div class="copybtns"><button class="btn small" data-copy-email="'+escapeHtml(job.applyEmail)+'">Copy email</button>'+
+      '<button class="btn small" data-copy-draft="'+job.id+'">Copy draft</button></div></div>'
+    ) : "";
+    var logoImg = job.companyLogo ? '<img src="'+escapeHtml(job.companyLogo)+'" onerror="this.style.display=\'none\';">' : "";
+    div.innerHTML =
+      '<div class="stripe '+regionClass(job.regionTag)+'"></div>'+
+      '<div class="card-top">'+
+        '<div class="logo-badge" style="background:'+companyColor(job.company)+';">'+escapeHtml(companyInitial(job.company))+logoImg+'</div>'+
+        '<div class="card-head">'+
+          '<div class="job-title">'+escapeHtml(job.title)+'</div>'+
+          '<div class="job-company">'+escapeHtml(job.company)+'</div>'+
+          '<div class="job-location"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-7.58 7-12a7 7 0 10-14 0c0 4.42 7 12 7 12z"/></svg>'+escapeHtml(job.location)+'</div>'+
+        '</div>'+
+        '<button class="bookmark-btn'+(job.saved?" saved":"")+'" data-save="'+job.id+'" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg></button>'+
+      '</div>'+
+      '<div class="chips"><span class="'+regionChipClass(job.regionTag)+'">'+escapeHtml(job.regionTag)+'</span>'+
+      '<span class="chip source">'+escapeHtml(job.source)+'</span>'+
+      (job.postedAt ? '<span class="chip posted">'+fmtRelative(job.postedAt)+'</span>' : '')+'</div>'+
+      (job.salaryUSD ? '<div class="salary-line">'+escapeHtml(job.salaryText)+'</div>' : '')+
+      '<div class="actions"><a class="applylink" href="'+escapeHtml(job.url)+'" target="_blank" rel="noopener"><button class="btn primary small">Apply Now</button></a>'+
+      '<button class="btn small" data-verify="'+job.id+'" data-company="'+escapeHtml(job.company)+'">Verify company</button>'+
+      '<label class="applied-row"><input type="checkbox" data-applied="'+job.id+'" '+(job.applied?"checked":"")+'> Applied</label></div>'+
+      '<div id="verify_'+job.id+'" class="quickapply" style="font-size:12px;" hidden></div>'+
+      quick;
+    return div;
+  }
+
+  var currentJobs=[];
+  var activePill="all";
+  function renderRolePills(){
+    var el=document.getElementById("rolePillRow"); if(!el) return;
+    el.innerHTML="";
+    var allPill=document.createElement("div");
+    allPill.className="rolepill"+(activePill==="all"?" active":"");
+    allPill.textContent="All";
+    allPill.addEventListener("click", function(){ activePill="all"; renderRolePills(); renderHomeList(); });
+    el.appendChild(allPill);
+    profile.roles.forEach(function(r){
+      var pill=document.createElement("div");
+      pill.className="rolepill"+(activePill===r.label?" active":"");
+      pill.textContent=r.label.replace(/\s*\(.*?\)\s*/g,"").trim();
+      pill.addEventListener("click", function(){ activePill=r.label; renderRolePills(); renderHomeList(); });
+      el.appendChild(pill);
+    });
+  }
+  function renderHomeList(){
+    var jobsEl=document.getElementById("jobList");
+    var searchInput=document.getElementById("homeSearchInput");
+    var q=(searchInput?searchInput.value:"").trim().toLowerCase();
+    var activeRoleObj = activePill!=="all" ? profile.roles.filter(function(r){ return r.label===activePill; })[0] : null;
+    var pillRe = activeRoleObj ? titleRegexFromRoles([activeRoleObj]) : null;
+    var filtered=currentJobs.filter(function(j){
+      var matchesSearch = !q || (j.title+" "+j.company).toLowerCase().indexOf(q)>=0;
+      var matchesPill = !pillRe || pillRe.test(j.title||"");
+      return matchesSearch && matchesPill;
+    });
+    jobsEl.innerHTML="";
+    if(!filtered.length) jobsEl.innerHTML='<div class="empty">No matches for your current filters. Try widening roles or work mode in Profile.</div>';
+    else filtered.forEach(function(j){ jobsEl.appendChild(jobCard(j)); });
+  }
+  var homeSearchEl=document.getElementById("homeSearchInput");
+  if(homeSearchEl) homeSearchEl.addEventListener("input", renderHomeList);
+
+  function renderLists(data){
+    currentJobs=data.jobs;
+    renderHomeList();
+    var counts=Object.entries(data.sourceCounts||{}).map(function(e){return e[0]+":"+e[1];}).join(" · ");
+    document.getElementById("lastUpdated").textContent = "Updated "+new Date(data.generatedAt).toLocaleString()+" · "+data.total+" matches · "+counts;
+  }
+
+  function syncCardState(id){
+    var cache=loadJobsCache();
+    if(cache){
+      cache.jobs.forEach(function(j){ if(j.id===id){ j.applied=!!appliedJobs[id]; j.saved=!!savedJobs[id]; } });
+      saveJobsCache(cache);
+    }
+    currentJobs.forEach(function(j){ if(j.id===id){ j.applied=!!appliedJobs[id]; j.saved=!!savedJobs[id]; } });
+  }
+
+  document.addEventListener("click", function(e){
+    var t=e.target;
+    if(t.matches("[data-applied]")){
+      var id=t.getAttribute("data-applied");
+      var job=jobsById[id];
+      if(t.checked && job){ appliedJobs[id]=Object.assign({}, job, {appliedAt:new Date().toISOString(), applied:true}); }
+      else { delete appliedJobs[id]; }
+      saveAppliedJobs(appliedJobs);
+      syncCardState(id);
+      if(document.getElementById("panel-myjobs").classList.contains("active")) renderMyJobs();
+    }
+    var saveBtn=t.closest("[data-save]");
+    if(saveBtn){
+      var sid=saveBtn.getAttribute("data-save");
+      var sjob=jobsById[sid];
+      if(savedJobs[sid]){ delete savedJobs[sid]; }
+      else if(sjob){ savedJobs[sid]=Object.assign({}, sjob, {savedAt:new Date().toISOString(), saved:true}); }
+      saveSavedJobs(savedJobs);
+      syncCardState(sid);
+      saveBtn.classList.toggle("saved", !!savedJobs[sid]);
+      if(document.getElementById("panel-myjobs").classList.contains("active")) renderMyJobs();
+    }
+    if(t.matches("[data-copy-email]")) copyText(t.getAttribute("data-copy-email"), t);
+    if(t.matches("[data-copy-draft]")){
+      var ta=document.getElementById("draft_"+t.getAttribute("data-copy-draft"));
+      if(ta) copyText(ta.value, t);
+    }
+    var verifyBtn=t.closest("[data-verify]");
+    if(verifyBtn) runVerify(verifyBtn.getAttribute("data-verify"), verifyBtn);
+  });
+
+  // ---------- verify company ----------
+  function emailDomain(email){ var m=(email||"").match(/@([^@]+)$/); return m?m[1].toLowerCase():null; }
+  function genericCompanySearchUrl(name){ return "https://www.google.com/search?q="+encodeURIComponent('"'+name+'" company official website reviews registration'); }
+  var MCA_URL="https://www.mca.gov.in/mcafoportal/companyLLPMasterData.do";
+  var GST_URL="https://services.gst.gov.in/services/searchtp";
+
+  function checkOpenCorporates(companyName){
+    if(!profile.opencorpKey) return Promise.resolve(undefined); // undefined = not configured
+    var url="https://api.opencorporates.com/v0.4/companies/search?q="+encodeURIComponent(companyName)+"&api_token="+encodeURIComponent(profile.opencorpKey);
+    return fetch(url).then(function(r){ if(!r.ok) throw new Error("bad"); return r.json(); })
+      .then(function(data){
+        var companies=(data && data.results && data.results.companies)||[];
+        return companies.slice(0,3).map(function(c){ return c.company; }); // [] = configured, searched, no match
+      }).catch(function(){ return null; }); // null = configured but call failed
+  }
+
+  function runVerify(id, btn){
+    var panel=document.getElementById("verify_"+id);
+    var job=jobsById[id];
+    if(!panel || !job) return;
+    if(!panel.hidden){ panel.hidden=true; return; }
+
+    panel.hidden=false;
+    panel.innerHTML="Checking…";
+    btn.disabled=true;
+
+    checkOpenCorporates(job.company).then(function(ocResult){
+      var lines=[];
+
+      if(ocResult===undefined){
+        lines.push("Add a free OpenCorporates API key in Profile for an automatic worldwide registry check — or use the buttons below.");
+      } else if(ocResult===null){
+        lines.push("OpenCorporates lookup failed — check your API key in Profile, or try the buttons below.");
+      } else if(!ocResult.length){
+        lines.push("OpenCorporates: no registered company found matching “"+job.company+"”. Not proof it's fake by itself — check MCA/GST below too, especially for India-based companies.");
+      } else {
+        lines.push("OpenCorporates found "+ocResult.length+" possible match"+(ocResult.length===1?"":"es")+": "+ocResult.map(function(c){
+          return escapeHtml(c.name)+" ("+escapeHtml(c.jurisdiction_code||"?")+", "+escapeHtml(c.current_status||"status unknown")+")";
+        }).join("; ")+". Compare the name, status and address to what you were told.");
+      }
+
+      if(job.applyEmail){
+        var dom=emailDomain(job.applyEmail);
+        if(job.companyDomain){
+          var ok = dom && (dom===job.companyDomain || dom.slice(-(job.companyDomain.length+1))==="."+job.companyDomain);
+          lines.push(ok
+            ? "Recruiter email domain ("+escapeHtml(dom)+") matches the company's own site ("+escapeHtml(job.companyDomain)+") — good sign."
+            : "Recruiter email domain ("+escapeHtml(dom||"unknown")+") does NOT match the company's site ("+escapeHtml(job.companyDomain)+") — treat with caution.");
+        } else {
+          lines.push("Recruiter email is "+escapeHtml(job.applyEmail)+" — this listing doesn't tell me the company's official domain, so I can't auto-compare. Check it against their real website yourself.");
+        }
+      }
+
+      var siteBtn = job.companyDomain
+        ? '<a href="https://'+escapeHtml(job.companyDomain)+'" target="_blank" rel="noopener"><button class="btn small">Visit official site</button></a>'
+        : '<a href="'+genericCompanySearchUrl(job.company)+'" target="_blank" rel="noopener"><button class="btn small">Find official site</button></a>';
+
+      panel.innerHTML =
+        lines.map(function(l){ return '<div style="margin-bottom:6px;">'+l+'</div>'; }).join("") +
+        '<div class="copybtns" style="flex-wrap:wrap; margin-top:4px;">'+
+          '<a href="'+MCA_URL+'" target="_blank" rel="noopener"><button class="btn small">Check on MCA (India)</button></a>'+
+          '<a href="'+GST_URL+'" target="_blank" rel="noopener"><button class="btn small">Check GSTIN (GST portal)</button></a>'+
+          siteBtn+
+        '</div>'+
+        '<div style="margin-top:8px;">Before trusting any offer: compare the registered name/status/address on MCA to what they told you, verify the GSTIN if one was given, confirm the recruiter’s email domain matches their real site, and contact the company through a phone number or email <b>you found on their official site</b> — not one the recruiter gave you.</div>';
+    }).finally(function(){ btn.disabled=false; });
+  }
+  function copyText(text, btn){
+    var original=btn.textContent;
+    function done(ok){ btn.textContent= ok?"Copied":"Select & copy"; setTimeout(function(){btn.textContent=original;},1400); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){done(true);}).catch(function(){done(false);});
+    } else done(false);
+  }
+
+  function doRefresh(){
+    var btn=document.getElementById("refreshBtn");
+    btn.disabled=true; btn.textContent="Loading…";
+    document.getElementById("jobList").innerHTML='<div class="progress">Fetching from RemoteOK, Remotive, Arbeitnow, Himalayas, We Work Remotely, Jobicy, Working Nomads' +
+      (profile.adzunaAppId ? ', Adzuna' : '') + (profile.joobleKey ? ', Jooble' : '') + '…</div>';
+    fetchAllJobs().then(function(data){
+      renderLists(data);
+    }).catch(function(e){
+      document.getElementById("jobList").innerHTML='<div class="empty">Could not fetch jobs — check your internet connection and try again.</div>';
+    }).finally(function(){
+      btn.disabled=false; btn.textContent="Refresh";
+    });
+  }
+  document.getElementById("refreshBtn").addEventListener("click", doRefresh);
+
+  // ---------- splash ----------
+  function dismissSplash(){
+    var el=document.getElementById("splash");
+    if(el) el.classList.add("hidden");
+  }
+  var splashEl=document.getElementById("splash");
+  if(splashEl) splashEl.addEventListener("click", dismissSplash);
+  setTimeout(dismissSplash, 2200);
+
+  // ---------- boot ----------
+  fillProfileForm();
+  var cached=loadJobsCache();
+  if(cached){ renderLists(cached); } else { doRefresh(); }
+})();
+</script>
+</body>
+</html>

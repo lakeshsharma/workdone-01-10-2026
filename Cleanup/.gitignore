@@ -1,0 +1,5 @@
+__pycache__/
+.dotnet-home/
+.nuget-packages/
+AgentRecovery/bin/
+AgentRecovery/obj/

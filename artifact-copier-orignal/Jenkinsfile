@@ -1,0 +1,208 @@
+// ============================================================
+// cxs-devops-artifact-copier
+//
+// Copies a Jenkins build artifact from any job to either:
+//   - A Windows SMB network share (paste the full UNC path)
+//   - Another Linux machine (SSH/rsync)
+//
+// Runs on the US Linux agent → US share = LAN speed (~10-15 min for 3-4 GB)
+//
+// Prerequisites on the Jenkins agent (Ubuntu):
+//   sudo apt install -y smbclient aria2 rsync sshpass curl
+//
+// Required Jenkins plugin (install once from Manage Jenkins → Plugins):
+//   "Copy Artifact" plugin  (id: copyartifact)
+// ============================================================
+
+pipeline {
+    agent { label 'linux' }
+
+    parameters {
+
+        // ── Source: which artifact to grab ──────────────────────────────────
+        string(
+            name: 'SOURCE_JOB',
+            defaultValue: 'onelink-rhel-iso-builder',
+            description: 'Jenkins job name that produced the artifact (exactly as it appears in Jenkins)'
+        )
+        string(
+            name: 'BUILD_NUMBER',
+            defaultValue: 'lastSuccessful',
+            description: '''Which build to copy from.
+Options:
+  lastSuccessful  — latest green build  (default)
+  lastStable      — latest stable build
+  lastBuild       — very last build (may be failed)
+  42              — a specific build number'''
+        )
+        string(
+            name: 'ARTIFACT_FILTER',
+            defaultValue: 'artifacts/*.iso',
+            description: 'File pattern inside the build artifacts, e.g.  artifacts/*.iso  or  artifacts/onelink-*.iso'
+        )
+
+        // ── Destination type ────────────────────────────────────────────────
+        choice(
+            name: 'DEST_TYPE',
+            choices: ['smb_share', 'linux_ssh'],
+            description: 'smb_share → Windows network share (UNC path)  |  linux_ssh → another Linux machine'
+        )
+
+        // ── SMB destination (only needed when DEST_TYPE = smb_share) ────────
+        string(
+            name: 'SMB_UNC_PATH',
+            defaultValue: '',
+            description: '''Full UNC path of the destination folder on the Windows share.
+Paste exactly as you would in Windows Explorer:
+  \\\\aristocrat-inc.com\\atus-R&D Systems\\tfsdrops\\SuiteRelease15-2-0\\RHEL9-ISO-OneLink
+Forward slashes also accepted:
+  //aristocrat-inc.com/atus-R&D Systems/tfsdrops/SuiteRelease15-2-0/RHEL9-ISO-OneLink'''
+        )
+
+        // ── Linux SSH destination (only needed when DEST_TYPE = linux_ssh) ──
+        string(
+            name: 'SSH_HOST',
+            defaultValue: '',
+            description: '[linux_ssh only] Hostname or IP of the destination Linux machine'
+        )
+        string(
+            name: 'SSH_PATH',
+            defaultValue: '',
+            description: '[linux_ssh only] Full remote path where the file should land, e.g. /data/drops/rhel9'
+        )
+
+        // ── Destination credentials (never stored, masked in all logs) ───────
+        string(
+            name: 'DEST_USER',
+            defaultValue: '',
+            description: 'Your username on the destination (Windows domain user or Linux user)'
+        )
+        password(
+            name: 'DEST_PASS',
+            defaultValue: '',
+            description: 'Your password for the destination — masked in all logs, never stored anywhere'
+        )
+    }
+
+    // ── Environment ──────────────────────────────────────────────────────────
+    environment {
+        INCOMING_DIR = "${WORKSPACE}/incoming"
+        SCRIPTS_DIR  = "${WORKSPACE}/scripts"
+    }
+
+    stages {
+
+        // ── 1. Validate ───────────────────────────────────────────────────────
+        stage('Validate') {
+            steps {
+                script {
+                    def required = ['SOURCE_JOB', 'ARTIFACT_FILTER', 'DEST_USER', 'DEST_PASS']
+
+                    if (params.DEST_TYPE == 'smb_share') {
+                        required << 'SMB_UNC_PATH'
+                    } else {
+                        required += ['SSH_HOST', 'SSH_PATH']
+                    }
+
+                    def missing = required.findAll { !params[it]?.trim() }
+                    if (missing) {
+                        error("Missing required parameters: ${missing.join(', ')}")
+                    }
+
+                    echo "Source job   : ${params.SOURCE_JOB}"
+                    echo "Build        : ${params.BUILD_NUMBER}"
+                    echo "Artifact     : ${params.ARTIFACT_FILTER}"
+                    echo "Destination  : ${params.DEST_TYPE}"
+                }
+            }
+        }
+
+        // ── 2. Grab artifact from Jenkins (no credentials needed) ─────────────
+        stage('Copy Artifact from Jenkins') {
+            steps {
+                script {
+                    // Resolve build selector from the plain-English BUILD_NUMBER param
+                    def selector
+                    switch (params.BUILD_NUMBER.trim().toLowerCase()) {
+                        case 'lastsuccessful': selector = lastSuccessful(); break
+                        case 'laststable':     selector = lastStable();     break
+                        case 'lastbuild':      selector = latestSavedBuild(); break
+                        default:               selector = specific(params.BUILD_NUMBER.trim()); break
+                    }
+
+                    copyArtifacts(
+                        projectName : params.SOURCE_JOB,
+                        selector    : selector,
+                        filter      : params.ARTIFACT_FILTER,
+                        target      : env.INCOMING_DIR,
+                        flatten     : true       // puts all matched files directly in INCOMING_DIR
+                    )
+                }
+
+                sh '''
+                    echo "Artifacts received:"
+                    ls -lh "$INCOMING_DIR/"
+                '''
+            }
+        }
+
+        // ── 3a. Transfer to Windows SMB share ────────────────────────────────
+        stage('Transfer → SMB Share') {
+            when { expression { params.DEST_TYPE == 'smb_share' } }
+            steps {
+                script {
+                    // Parse UNC path here in Groovy — clean, no bash escaping pain
+                    def unc = params.SMB_UNC_PATH
+                                    .replace('\\', '/')
+                                    .replaceAll(/^\/+/, '')   // strip leading slashes
+                    def parts    = unc.tokenize('/')
+                    def smbHost  = parts.size() > 0 ? parts[0]              : ''
+                    def smbShare = parts.size() > 1 ? parts[1]              : ''
+                    def smbSubdir = parts.size() > 2 ? parts[2..-1].join('/') : ''
+
+                    if (!smbHost || !smbShare) {
+                        error("Could not parse UNC path '${params.SMB_UNC_PATH}'. Expected: \\\\server\\share\\subdir")
+                    }
+
+                    echo "SMB host  : ${smbHost}"
+                    echo "SMB share : ${smbShare}"
+                    echo "SMB subdir: ${smbSubdir}"
+
+                    withEnv([
+                        "SMB_HOST=${smbHost}",
+                        "SMB_SHARE=${smbShare}",
+                        "SMB_SUBDIR=${smbSubdir}"
+                    ]) {
+                        sh '"$SCRIPTS_DIR/transfer.sh" smb'
+                    }
+                }
+            }
+        }
+
+        // ── 3b. Transfer to Linux host via SSH/rsync ──────────────────────────
+        stage('Transfer → Linux SSH') {
+            when { expression { params.DEST_TYPE == 'linux_ssh' } }
+            steps {
+                withEnv([
+                    "SSH_TARGET_HOST=${params.SSH_HOST}",
+                    "SSH_TARGET_PATH=${params.SSH_PATH}"
+                ]) {
+                    sh '"$SCRIPTS_DIR/transfer.sh" ssh'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'rm -rf "$INCOMING_DIR" 2>/dev/null || true'
+            echo 'Workspace cleaned.'
+        }
+        success {
+            echo "SUCCESS — artifact delivered."
+        }
+        failure {
+            echo "FAILED — check the stage logs above."
+        }
+    }
+}
