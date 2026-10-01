@@ -1,0 +1,780 @@
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="OneLink Administration Tool"
+    Height="920"
+    Width="1180"
+    MinHeight="820"
+    MinWidth="1050"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="CanResize"
+    Background="#F4F6FA"
+    FontFamily="Segoe UI">
+
+    <Window.Resources>
+
+        <!-- Main colors -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#5B21B6"/>
+        <SolidColorBrush x:Key="PrimaryDarkBrush" Color="#3B0764"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#7C3AED"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#16A34A"/>
+        <SolidColorBrush x:Key="DangerBrush" Color="#DC2626"/>
+        <SolidColorBrush x:Key="WarningBrush" Color="#F59E0B"/>
+        <SolidColorBrush x:Key="CardBrush" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#D8DEE9"/>
+        <SolidColorBrush x:Key="TextBrush" Color="#1F2937"/>
+        <SolidColorBrush x:Key="MutedTextBrush" Color="#6B7280"/>
+
+        <!-- Default text -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Textbox style -->
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Password box style -->
+        <Style TargetType="PasswordBox">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Padding" Value="8,5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- ComboBox style -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Padding" Value="6,3"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        </Style>
+
+        <!-- Main purple buttons -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="MinWidth" Value="130"/>
+            <Setter Property="Margin" Value="6"/>
+            <Setter Property="Padding" Value="14,5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="6"
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#CBD5E1"/>
+                    <Setter Property="Foreground" Value="#64748B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Green buttons -->
+        <Style x:Key="SuccessButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource SuccessBrush}"/>
+        </Style>
+
+        <!-- Red buttons -->
+        <Style x:Key="DangerButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource DangerBrush}"/>
+        </Style>
+
+        <!-- Secondary buttons -->
+        <Style x:Key="SecondaryButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="#475569"/>
+        </Style>
+
+        <!-- GroupBox cards -->
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="{StaticResource CardBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryDarkBrush}"/>
+        </Style>
+
+        <!-- Tab styling -->
+        <Style TargetType="TabItem">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="175"/>
+			<RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border
+            Grid.Row="0"
+            Background="{StaticResource PrimaryDarkBrush}"
+            Padding="22,10">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock
+                        Text="OneLink Administration Tool"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Bold"/>
+
+                    <TextBlock
+                        Text="Remote deployment, database and service management"
+                        Foreground="#DDD6FE"
+                        FontSize="13"
+                        Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <Border
+                    Grid.Column="1"
+                    Background="#4C1D95"
+                    CornerRadius="15"
+                    Padding="14,7"
+                    VerticalAlignment="Center">
+
+                    <TextBlock
+                        Text="PowerShell Automation"
+                        Foreground="White"
+                        FontWeight="SemiBold"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Connection card -->
+        <Border
+            Grid.Row="1"
+            Margin="18,16,18,8"
+            Padding="14"
+            Background="White"
+            BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="8">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="230"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Server IP / Host:"/>
+
+                <TextBox
+                    x:Name="TxtServer"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    ToolTip="Enter the Linux server IP address or hostname"/>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Text="SSH Username:"/>
+
+                <TextBox
+                    x:Name="TxtUsername"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    ToolTip="Enter the Linux SSH account username"/>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    Text="Port:"/>
+
+                <TextBox
+                    x:Name="TxtPort"
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    ToolTip="Default SSH port is 22"/>
+
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="6"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+
+                    <Button
+                        x:Name="BtnConnect"
+                        Content="Connect"
+                        Style="{StaticResource SuccessButtonStyle}"/>
+
+                    <Button
+                        x:Name="BtnDisconnect"
+                        Content="Disconnect"
+                        Style="{StaticResource DangerButtonStyle}"
+                        IsEnabled="False"/>
+                </StackPanel>
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="SSH Password:"/>
+
+                <PasswordBox
+                    x:Name="PwdSsh"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    ToolTip="Enter the SSH account password"/>
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Text="Connection Status:"/>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="4"
+                    Background="#FEE2E2"
+                    CornerRadius="5"
+                    Padding="10,6"
+                    Margin="5">
+
+                    <TextBlock
+                        x:Name="TxtConnectionStatus"
+                        Text="Disconnected"
+                        Foreground="{StaticResource DangerBrush}"
+                        FontWeight="Bold"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Operations -->
+        <Grid Grid.Row="2" Margin="18,8,18,4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+                <Border
+                    Width="6"
+                    Height="28"
+                    Background="{StaticResource AccentBrush}"
+                    CornerRadius="3"
+                    Margin="0,0,10,0"/>
+
+                <TextBlock
+                    Text="Operations"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource PrimaryDarkBrush}"/>
+            </StackPanel>
+
+            <TabControl Grid.Row="1" x:Name="OperationTabs">
+
+                <!-- Database tab -->
+                <TabItem Header="Database">
+                    <ScrollViewer
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled">
+
+                        <Grid Margin="12" MinHeight="390">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox
+                                Header="Create Database User"
+                                Grid.Column="0"
+                                MinHeight="350"
+                                VerticalAlignment="Stretch">
+                            <Grid Margin="10">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="Username:"/>
+                                <TextBox
+                                    x:Name="TxtDbUser"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    ToolTip="New MySQL username"/>
+
+                                <TextBlock Grid.Row="1" Text="Password:"/>
+                                <PasswordBox
+                                    x:Name="PwdDbUser"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    ToolTip="Password for the new MySQL user"/>
+
+                                <TextBlock Grid.Row="2" Text="Allowed IP:"/>
+                                <TextBox
+                                    x:Name="TxtDbUserIp"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    ToolTip="IP address allowed to connect using this account"/>
+
+                                <Button
+                                    x:Name="BtnCreateDbUser"
+                                    Grid.Row="3"
+                                    Grid.ColumnSpan="2"
+                                    Content="Create DB User"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    HorizontalAlignment="Right"
+                                    Margin="6,14,6,6"/>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox
+                            Header="Create Database / Grant Privileges"
+                            Grid.Column="1"
+                            MinHeight="350"
+                            VerticalAlignment="Stretch">
+
+                            <Grid Margin="10">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="Database Name:"/>
+
+                                <TextBox
+                                    x:Name="TxtDatabaseName"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    ToolTip="Database to create or use for granting privileges"/>
+
+                                <Button
+                                    x:Name="BtnCreateDatabase"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    Content="Create Database"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    HorizontalAlignment="Right"/>
+
+                                <Separator
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Margin="5,12"/>
+
+                                <TextBlock Grid.Row="3" Text="Grant User:"/>
+
+                                <TextBox
+                                    x:Name="TxtGrantUser"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    ToolTip="Existing MySQL username"/>
+
+                                <TextBlock Grid.Row="4" Text="Grant IP:"/>
+
+                                <TextBox
+                                    x:Name="TxtGrantIp"
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    ToolTip="IP associated with the MySQL user"/>
+
+                                <TextBlock Grid.Row="5" Text="User Password:"/>
+
+                                <PasswordBox
+                                    x:Name="PwdGrant"
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    ToolTip="Password of the MySQL user"/>
+
+                                <Button
+                                    x:Name="BtnGrantPrivileges"
+                                    Grid.Row="6"
+                                    Grid.ColumnSpan="2"
+                                    Content="Grant Privileges"
+                                    Style="{StaticResource SuccessButtonStyle}"
+                                    HorizontalAlignment="Right"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </ScrollViewer>
+                </TabItem>
+
+                <!-- Package tab -->
+                <TabItem Header="Package">
+                    <ScrollViewer
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled">
+
+                        <Grid Margin="12" MinHeight="330">
+
+                            <GroupBox
+                                Header="RPM Package Deployment"
+                                MinHeight="300"
+                                VerticalAlignment="Stretch">
+
+                                <Grid Margin="14">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="140"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="Local RPM File:"/>
+
+                            <TextBox
+                                x:Name="TxtPackagePath"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                ToolTip="Select an RPM package from the Windows machine"/>
+
+                            <Button
+                                x:Name="BtnBrowsePackage"
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Content="Browse..."
+                                Style="{StaticResource SecondaryButtonStyle}"/>
+
+                            <TextBlock Grid.Row="1" Text="Remote Directory:"/>
+
+                            <TextBox
+                                x:Name="TxtRemoteDirectory"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                ToolTip="Remote Linux directory used for package upload"/>
+
+                            <TextBlock Grid.Row="2" Text="Installation Mode:"/>
+
+                            <ComboBox
+                                x:Name="CmbInstallMode"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2">
+
+                                <ComboBoxItem Content="Upgrade" IsSelected="True"/>
+                                <ComboBoxItem Content="Install"/>
+                            </ComboBox>
+
+                            <StackPanel
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+
+                                <Button
+                                    x:Name="BtnUploadPackage"
+                                    Content="Upload Package"
+                                    Style="{StaticResource SecondaryButtonStyle}"/>
+
+                                <Button
+                                    x:Name="BtnUploadInstall"
+                                    Content="Upload and Install"
+                                    Style="{StaticResource SuccessButtonStyle}"/>
+                            </StackPanel>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+                <!-- Services tab -->
+                <TabItem Header="Services and SSL">
+                    <ScrollViewer
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled">
+
+                        <Grid Margin="12" MinHeight="340">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox
+                            Header="Service Control"
+                            Grid.Column="0"
+                            MinHeight="300"
+                            VerticalAlignment="Stretch">
+
+                            <Grid Margin="12">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="Service:"/>
+
+                                <ComboBox
+                                    x:Name="CmbService"
+                                    Grid.Row="0"
+                                    Grid.Column="1"/>
+
+                                <TextBlock Grid.Row="1" Text="Action:"/>
+
+                                <ComboBox
+                                    x:Name="CmbServiceAction"
+                                    Grid.Row="1"
+                                    Grid.Column="1">
+
+                                    <ComboBoxItem Content="Restart" IsSelected="True"/>
+                                    <ComboBoxItem Content="Start"/>
+                                </ComboBox>
+
+                                <Button
+                                    x:Name="BtnServiceAction"
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    Content="Execute Service Action"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    HorizontalAlignment="Right"/>
+
+                                <Button
+                                    x:Name="BtnServiceStatus"
+                                    Grid.Row="3"
+                                    Grid.ColumnSpan="2"
+                                    Content="Check Service Status"
+                                    Style="{StaticResource SecondaryButtonStyle}"
+                                    HorizontalAlignment="Right"/>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox
+                            Header="SSL Configuration"
+                            Grid.Column="1"
+                            MinHeight="300"
+                            VerticalAlignment="Stretch">
+
+                            <Grid Margin="12">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="Component:"/>
+
+                                <ComboBox
+                                    x:Name="CmbSslComponent"
+                                    Grid.Row="0"
+                                    Grid.Column="1">
+
+                                    <ComboBoxItem
+                                        Content="Concentrator"
+                                        IsSelected="True"/>
+
+                                    <ComboBoxItem Content="Report Server"/>
+                                </ComboBox>
+
+                                <Button
+                                    x:Name="BtnEnableSsl"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    Content="Enable SSL"
+                                    Style="{StaticResource SuccessButtonStyle}"
+                                    HorizontalAlignment="Right"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!-- Activity log -->
+        <GroupBox
+            Grid.Row="3"
+            Header="Activity Log"
+            Margin="18,8,18,14">
+
+            <Grid Margin="8">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox
+                    x:Name="TxtLog"
+                    Grid.Row="0"
+                    IsReadOnly="True"
+                    AcceptsReturn="True"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Auto"
+                    FontFamily="Consolas"
+                    FontSize="12"
+                    TextWrapping="NoWrap"
+                    Background="#111827"
+                    Foreground="#D1FAE5"
+                    BorderThickness="0"/>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+
+                    <Button
+                        x:Name="BtnClearLog"
+                        Content="Clear Log"
+                        Style="{StaticResource SecondaryButtonStyle}"/>
+
+                    <Button
+                        x:Name="BtnOpenLog"
+                        Content="Open Log File"
+                        Style="{StaticResource PrimaryButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+				<!-- Footer -->
+		<Border
+			Grid.Row="4"
+			Background="#1E293B"
+			BorderThickness="0,1,0,0"
+			BorderBrush="#CBD5E1">
+
+			<Grid Margin="12,0">
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+					Grid.Column="0"
+					VerticalAlignment="Center"
+					Foreground="White"
+					FontSize="12"
+					FontWeight="SemiBold"
+					Text="Team : Aristocrat | OneLink"/>
+
+				<TextBlock
+					Grid.Column="1"
+					Margin="30,0"
+					VerticalAlignment="Center"
+					Foreground="#E2E8F0"
+					FontSize="12"
+					Text="Version : 1.0.0"/>
+
+				<TextBlock
+					Grid.Column="2"
+					Margin="30,0"
+					VerticalAlignment="Center"
+					Foreground="#E2E8F0"
+					FontSize="12"
+					Text="Latest Update : 27-Jul-2026"/>
+
+				<TextBlock
+					Grid.Column="3"
+					Margin="30,0"
+					VerticalAlignment="Center"
+					Foreground="#22C55E"
+					FontWeight="Bold"
+					FontSize="12"
+					Text="Ready"/>
+
+			</Grid>
+
+		</Border>
+    </Grid>
+</Window>

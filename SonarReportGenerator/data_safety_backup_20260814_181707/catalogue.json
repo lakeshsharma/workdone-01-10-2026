@@ -1,0 +1,4882 @@
+{
+ "ati-cxs-AppContent-Service": {
+  "key": "ati-cxs-AppContent-Service",
+  "branches": [
+   {
+    "name": "Releases/25.0.0",
+    "isMain": false,
+    "lastScan": "2026-04-20"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-ApplessSE-CasinoService": {
+  "key": "ati-cxs-ApplessSE-CasinoService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/26.1.0",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   }
+  ]
+ },
+ "ati-cxs-ApplessSE-MobileAPI": {
+  "key": "ati-cxs-ApplessSE-MobileAPI",
+  "branches": [
+   {
+    "name": "Releases/26.1.0",
+    "isMain": false,
+    "lastScan": "2026-04-07"
+   },
+   {
+    "name": "Dev/26.1.0-SE-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-03-26"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-ApplessSE-WebApp": {
+  "key": "ati-cxs-ApplessSE-WebApp",
+  "branches": [
+   {
+    "name": "Releases/26.1.0",
+    "isMain": false,
+    "lastScan": "2026-04-07"
+   },
+   {
+    "name": "Dev/26.1.0-SE-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-03-26"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-CoreFramework-Framework2.0": {
+  "key": "ati-cxs-CoreFramework-Framework2.0",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-14"
+   }
+  ]
+ },
+ "ati-cxs-Dynamic-Listener-Service": {
+  "key": "ati-cxs-Dynamic-Listener-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/2.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-07-25"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Dynamic-Messaging-Service": {
+  "key": "ati-cxs-Dynamic-Messaging-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/2.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-07-25"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-ex-FloorFocus-App": {
+  "key": "ati-cxs-ex-FloorFocus-App",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Modernize-EX-Mobile",
+    "isMain": false,
+    "lastScan": "2026-07-11"
+   }
+  ]
+ },
+ "ati-cxs-ex-TaskService": {
+  "key": "ati-cxs-ex-TaskService",
+  "branches": [
+   {
+    "name": "Releases/25.0.0",
+    "isMain": false,
+    "lastScan": "2026-04-23"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/25.0.0-RabbitMQ-SDK",
+    "isMain": false,
+    "lastScan": "2026-05-04"
+   }
+  ]
+ },
+ "ati-cxs-Floor-Service": {
+  "key": "ati-cxs-Floor-Service",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/2.0.1",
+    "isMain": false,
+    "lastScan": "2026-03-11"
+   }
+  ]
+ },
+ "ati-cxs-FloorService": {
+  "key": "ati-cxs-FloorService",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/2.0.1\"",
+    "isMain": false,
+    "lastScan": "2025-09-25"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/2.0.1-SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2025-09-09"
+   }
+  ]
+ },
+ "ati-cxs-Framework-IdentityServer": {
+  "key": "ati-cxs-Framework-IdentityServer",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Releases/6.4.2\"",
+    "isMain": false,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Gaming.Wallet-MobileClassII": {
+  "key": "ati-cxs-Gaming.Wallet-MobileClassII",
+  "branches": [
+   {
+    "name": "Releases/1.0.0",
+    "isMain": false,
+    "lastScan": "2025-09-10"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Gaming.WalletProcessor-MobileClassII": {
+  "key": "ati-cxs-Gaming.WalletProcessor-MobileClassII",
+  "branches": [
+   {
+    "name": "Releases/1.0.0",
+    "isMain": false,
+    "lastScan": "2025-09-10"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Gaming.WalletStateService-MobileClassII": {
+  "key": "ati-cxs-Gaming.WalletStateService-MobileClassII",
+  "branches": [
+   {
+    "name": "Releases/1.0.0",
+    "isMain": false,
+    "lastScan": "2025-09-10"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-GPMS-WebAPI": {
+  "key": "ati-cxs-GPMS-WebAPI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Releases/1.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/1.0.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   }
+  ]
+ },
+ "ati-cxs-LoyaltyKiosk-KioskManager": {
+  "key": "ati-cxs-LoyaltyKiosk-KioskManager",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Release/15.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-Mobile-RMQWrapper": {
+  "key": "ati-cxs-Mobile-RMQWrapper",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/26.0.0-RabbiMQ-SDK",
+    "isMain": false,
+    "lastScan": "2026-05-05"
+   }
+  ]
+ },
+ "ati-cxs-mobile-walletapp": {
+  "key": "ati-cxs-mobile-walletapp",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "jaswant/26.4.0-cardless-cashless/sonar_issues",
+    "isMain": false,
+    "lastScan": "2026-07-31"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.0.0-markertrax",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   }
+  ]
+ },
+ "ati-cxs-MobileFoundation-AppAttestIntegrity-BE": {
+  "key": "ati-cxs-MobileFoundation-AppAttestIntegrity-BE",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "SonarTest",
+    "isMain": false,
+    "lastScan": "2025-09-18"
+   },
+   {
+    "name": "Dev/dev",
+    "isMain": false,
+    "lastScan": "2025-09-19"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-CardlessConnect-App": {
+  "key": "ati-cxs-Mobility-CardlessConnect-App",
+  "branches": [
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Mobility-CardlessConnect-Service": {
+  "key": "ati-cxs-Mobility-CardlessConnect-Service",
+  "branches": [
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-11-20"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-DynamicListener-Service": {
+  "key": "ati-cxs-Mobility-DynamicListener-Service",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/2.0.1",
+    "isMain": false,
+    "lastScan": "2026-07-11"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-DynamicMessaging-Service": {
+  "key": "ati-cxs-Mobility-DynamicMessaging-Service",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/2.0.1",
+    "isMain": false,
+    "lastScan": "2026-07-04"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-EAPI.JackpotInfo": {
+  "key": "ati-cxs-Mobility-EAPI.JackpotInfo",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/15.3.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/15.3.0-gs-mobile-on-prem\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2025-07-18"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-EAPI.PlayerInfo": {
+  "key": "ati-cxs-Mobility-EAPI.PlayerInfo",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/15.3.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.0.0",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2025-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/15.3.0-gs-mobile-on-prem\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-EAPI.Wallet": {
+  "key": "ati-cxs-Mobility-EAPI.Wallet",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/15.3.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "main",
+    "isMain": false,
+    "lastScan": "2026-04-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Patch/15.3.1",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-07-18"
+   },
+   {
+    "name": "\"refs/heads/Dev/15.3.0-gs-mobile-on-prem\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Dev/SonarQubeSecurityFixes\"",
+    "isMain": false,
+    "lastScan": "2026-08-02"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-EAPI.WalletProcessor": {
+  "key": "ati-cxs-Mobility-EAPI.WalletProcessor",
+  "branches": [
+   {
+    "name": "Patch/15.3.1",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-07-18"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-EAPI.WalletStateService": {
+  "key": "ati-cxs-Mobility-EAPI.WalletStateService",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/15.3.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Dev/SonarQubeSecurityFixes\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Patch/15.3.1",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-11-18"
+   },
+   {
+    "name": "\"refs/heads/Dev/15.3.0-gs-mobile-on-prem\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-02"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-EnrollMixApps": {
+  "key": "ati-cxs-Mobility-EnrollMixApps",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "refs/heads/master",
+    "isMain": false,
+    "lastScan": "2026-01-29"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-Mobile.Connect.Configuration-App": {
+  "key": "ati-cxs-Mobility-Mobile.Connect.Configuration-App",
+  "branches": [
+   {
+    "name": "nm106775/migration",
+    "isMain": false,
+    "lastScan": "2026-07-24"
+   },
+   {
+    "name": "refs/heads/Releases/2.0.1",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "refs/heads/Vikash/Dev/SonarQubeSecurityFixes/fixes",
+    "isMain": false,
+    "lastScan": "2024-06-14"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-mobility-mobileconnect-app": {
+  "key": "ati-cxs-mobility-mobileconnect-app",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "Dev/26.0.0-markertrax",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   }
+  ]
+ },
+ "ati-cxs-mobility-mobileconnect-table": {
+  "key": "ati-cxs-mobility-mobileconnect-table",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-06-25"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-07-31"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-MobilenCompass-App": {
+  "key": "ati-cxs-Mobility-MobilenCompass-App",
+  "branches": [
+   {
+    "name": "Releases/15.1.0",
+    "isMain": false,
+    "lastScan": "2025-09-08"
+   },
+   {
+    "name": "MnCompass/15.1.0",
+    "isMain": false,
+    "lastScan": "2025-08-29"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-mobility-Oasis360": {
+  "key": "ati-cxs-mobility-Oasis360",
+  "branches": [
+   {
+    "name": "Releases/25.0.0",
+    "isMain": false,
+    "lastScan": "2026-07-17"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Mobility-PlayerDevices-LicenseCreator": {
+  "key": "ati-cxs-Mobility-PlayerDevices-LicenseCreator",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/2.0.1",
+    "isMain": false,
+    "lastScan": "2026-03-06"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-PlayerDevices-Service": {
+  "key": "ati-cxs-Mobility-PlayerDevices-Service",
+  "branches": [
+   {
+    "name": "nm106775/migration",
+    "isMain": false,
+    "lastScan": "2026-07-24"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Dev/SonarQubeSecurityFixes\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-11-18"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-Wallet-ExternalWalletFundTransfer": {
+  "key": "ati-cxs-Mobility-Wallet-ExternalWalletFundTransfer",
+  "branches": [
+   {
+    "name": "Patch/15.3.1",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2025-07-18"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-Wallet-Service": {
+  "key": "ati-cxs-Mobility-Wallet-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/2.0.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-12"
+   },
+   {
+    "name": "\"refs/heads/Dev/SonarQubeSecurityFixes\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-11-18"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "pankajb/Bug_768383",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "pankajb/Fix_Sonar_Issues",
+    "isMain": false,
+    "lastScan": "2026-07-30"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-WalletApp": {
+  "key": "ati-cxs-Mobility-WalletApp",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   }
+  ]
+ },
+ "ati-cxs-Mobility-WalletConfigurationApp": {
+  "key": "ati-cxs-Mobility-WalletConfigurationApp",
+  "branches": [
+   {
+    "name": "refs/heads/Releases/2.0.1",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "refs/heads/Dev/2.0.3-Digital-Card",
+    "isMain": false,
+    "lastScan": "2026-08-14"
+   },
+   {
+    "name": "refs/heads/Releases/2.0.3",
+    "isMain": false,
+    "lastScan": "2026-08-14"
+   }
+  ]
+ },
+ "ati-cxs-myplay": {
+  "key": "ati-cxs-myplay",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-05"
+   }
+  ]
+ },
+ "ati-cxs-nCompass-cpp": {
+  "key": "ati-cxs-nCompass-cpp",
+  "branches": [
+   {
+    "name": "nCompass Release 15.0.12",
+    "isMain": false,
+    "lastScan": "2026-08-14"
+   },
+   {
+    "name": "nCompass Dev 15.6",
+    "isMain": false,
+    "lastScan": "2026-07-30"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "nCompass Dev 15.0.5",
+    "isMain": false,
+    "lastScan": "2024-07-24"
+   },
+   {
+    "name": "nCompass Dev 16.0",
+    "isMain": false,
+    "lastScan": "2025-01-30"
+   },
+   {
+    "name": "nCompass Release 15.0.4",
+    "isMain": false,
+    "lastScan": "2024-07-31"
+   },
+   {
+    "name": "nCompass Release 15.0.5",
+    "isMain": false,
+    "lastScan": "2024-07-29"
+   }
+  ]
+ },
+ "ati-cxs-nCompass-OOBPluggableApps": {
+  "key": "ati-cxs-nCompass-OOBPluggableApps",
+  "branches": [
+   {
+    "name": "lakesh-test-nCompassOOB",
+    "isMain": false,
+    "lastScan": "2025-08-31"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-nCompass-UI": {
+  "key": "ati-cxs-nCompass-UI",
+  "branches": [
+   {
+    "name": "*/Dev/15.6",
+    "isMain": false,
+    "lastScan": "2026-07-30"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Administrator": {
+  "key": "ati-cxs-OasisCore-Administrator",
+  "branches": [
+   {
+    "name": "amit-dayama_ATItech-patch-4",
+    "isMain": false,
+    "lastScan": ""
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-02-05"
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-AppConfigurationManager": {
+  "key": "ati-cxs-OasisCore-AppConfigurationManager",
+  "branches": [
+   {
+    "name": "Releases/12.14.1140",
+    "isMain": false,
+    "lastScan": "2026-06-22"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-06-18"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Bingo": {
+  "key": "ati-cxs-OasisCore-Bingo",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-06-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-BlackBart": {
+  "key": "ati-cxs-OasisCore-BlackBart",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-04-25"
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-BonusPoints": {
+  "key": "ati-cxs-OasisCore-BonusPoints",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-CoinsInterfaceService": {
+  "key": "ati-cxs-OasisCore-CoinsInterfaceService",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-ConfigurationService": {
+  "key": "ati-cxs-OasisCore-ConfigurationService",
+  "branches": [
+   {
+    "name": "\"refs/pull/58830/merge\"",
+    "isMain": false,
+    "lastScan": "2026-07-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/3.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-02-07"
+   },
+   {
+    "name": "\"refs/heads/Releases/3.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-ConfigurationService-windows": {
+  "key": "ati-cxs-OasisCore-ConfigurationService-windows",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-CountInterface": {
+  "key": "ati-cxs-OasisCore-CountInterface",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-CountOperation": {
+  "key": "ati-cxs-OasisCore-CountOpertion",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DiagnosticMonitor": {
+  "key": "ati-cxs-OasisCore-DiagnosticMonitor",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis15-1-SecurityService": {
+  "key": "ati-cxs-OasisCore-DV-Oasis15-1-SecurityService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis15-1-SurveillanceMonitor": {
+  "key": "ati-cxs-OasisCore-DV-Oasis15-1-SurveillanceMonitor",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-Administrator": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-Administrator",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-BlackBart": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-BlackBart",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-FloorLogix": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-FloorLogix",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"\"",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-JackpotFill": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-JackpotFill",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"\"",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-MarketingManager": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-MarketingManager",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-PitBOSS": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-PitBOSS",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-DV-Oasis16-0-SuperPlaymate": {
+  "key": "ati-cxs-OasisCore-DV-Oasis16-0-SuperPlaymate",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-EncryptionandConversionManager": {
+  "key": "ati-cxs-OasisCore-EncryptionandConversionManager",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-06-23"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-ExternalFloor": {
+  "key": "ati-cxs-OasisCore-ExternalFloor",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-FloorApi": {
+  "key": "ati-cxs-OasisCore-FloorApi",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-FloorApi-Service": {
+  "key": "ati-cxs-OasisCore-FloorApi-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/Oasis15.3\"",
+    "isMain": false,
+    "lastScan": "2026-07-17"
+   },
+   {
+    "name": "Patch/15.2.4",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "Releases/15.2.0",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "$(SonarBranchName)",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "Dev/Oasis15.3",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-07-17"
+   },
+   {
+    "name": "\"refs/heads/Patch/15.2.4\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-FloorLogix": {
+  "key": "ati-cxs-OasisCore-FloorLogix",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "Patch/15.2.5",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "Releases/12.14.1140",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-FolioService": {
+  "key": "ati-cxs-OasisCore-FolioService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Gateway": {
+  "key": "ati-cxs-OasisCore-Gateway",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-HeadCount": {
+  "key": "ati-cxs-OasisCore-HeadCount",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-JackpotFill-BFF": {
+  "key": "ati-cxs-OasisCore-JackpotFill-BFF",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2025-09-29"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-JackpotFill-ThickClient": {
+  "key": "ati-cxs-OasisCore-JackpotFill-ThickClient",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-JackpotFill-UI": {
+  "key": "ati-cxs-OasisCore-JackpotFill-UI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-JackpotService": {
+  "key": "ati-cxs-OasisCore-JackpotService",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3",
+    "isMain": false,
+    "lastScan": "2026-03-27"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-01-29"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-JurisdictionalReportUtility": {
+  "key": "ati-cxs-OasisCore-JurisdictionalReportUtility",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Launcher.Service": {
+  "key": "ati-cxs-OasisCore-Launcher.Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/1.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Launcher.UI": {
+  "key": "ati-cxs-OasisCore-Launcher.UI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "refs/heads/Releases/1.0.0",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-LicenseFileCreater": {
+  "key": "ati-cxs-OasisCore-LicenseFileCreater",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-LicenseFileManager": {
+  "key": "ati-cxs-OasisCore-LicenseFileManager",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Licensing.AdministratorService": {
+  "key": "ati-cxs-OasisCore-Licensing.AdministratorService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/dev\"",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Licensing.AdministratorUI": {
+  "key": "ati-cxs-OasisCore-Licensing.AdministratorUI",
+  "branches": [
+   {
+    "name": "refs/heads/Dev/dev",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Licensing.Importer.UI": {
+  "key": "ati-cxs-OasisCore-Licensing.Importer.UI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "refs/heads/Dev/dev",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Licensing.ImporterService": {
+  "key": "ati-cxs-OasisCore-Licensing.ImporterService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/dev\"",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-ManagementApp": {
+  "key": "ati-cxs-OasisCore-ManagementApp",
+  "branches": [
+   {
+    "name": "\"refs/pull/58831/merge\"",
+    "isMain": false,
+    "lastScan": "2026-07-09"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Releases/3.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "\"refs/heads/Releases/3.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-ManagementUI": {
+  "key": "ati-cxs-OasisCore-ManagementUI",
+  "branches": [
+   {
+    "name": "refs/pull/58832/merge",
+    "isMain": false,
+    "lastScan": "2026-07-09"
+   },
+   {
+    "name": "refs/heads/Releases/3.0.0",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "refs/heads/Releases/3.1.0",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-MarketingManager": {
+  "key": "ati-cxs-OasisCore-MarketingManager",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-MarketingService": {
+  "key": "ati-cxs-OasisCore-MarketingService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-MessageRelayService": {
+  "key": "ati-cxs-OasisCore-MessageRelayService",
+  "branches": [
+   {
+    "name": "15.3",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "Dev/15.3",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Meter-Service": {
+  "key": "ati-cxs-OasisCore-Meter-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/Oasis15.3\"",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "Patch/15.2.4",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "Releases/15.2.0",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "Dev/Oasis15.3",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-07-17"
+   },
+   {
+    "name": "\"refs/heads/Patch/15.2.4\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-MeterComparison": {
+  "key": "ati-cxs-OasisCore-MeterComparison",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-MRDV-Oasis15-0MR-SurveillanceMonitor": {
+  "key": "ati-cxs-OasisCore-MRDV-Oasis15-0MR-SurveillanceMonitor",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-NewOasis": {
+  "key": "ati-cxs-OasisCore-NewOasis",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Main",
+    "isMain": false,
+    "lastScan": "2026-01-21"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-nTime": {
+  "key": "ati-cxs-OasisCore-nTime",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Oasis-nConnect": {
+  "key": "ati-cxs-OasisCore-Oasis-nConnect",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/15.3",
+    "isMain": false,
+    "lastScan": "2026-06-09"
+   },
+   {
+    "name": "Patch/15.2.15",
+    "isMain": false,
+    "lastScan": "2026-07-06"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-OasisWildwoodCasino-MRDV-FloorLogix": {
+  "key": "ati-cxs-OasisCore-OasisWildwoodCasino-MRDV-FloorLogix",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-OasisWildwoodCasino-RL-FloorLogix": {
+  "key": "ati-cxs-OasisCore-OasisWildwoodCasino-RL-FloorLogix",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-OhioW2GExtract": {
+  "key": "ati-cxs-OasisCore-OhioW2GExtract",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-OmniView": {
+  "key": "ati-cxs-OasisCore-OmniView",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PatronBalSvc": {
+  "key": "ati-cxs-OasisCore-PatronBalSvc",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PatronService": {
+  "key": "ati-cxs-OasisCore-PatronService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PitBOSS": {
+  "key": "ati-cxs-OasisCore-PitBOSS",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PitPrinter": {
+  "key": "ati-cxs-OasisCore-PitPrinter",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PlayerService": {
+  "key": "ati-cxs-OasisCore-PlayerService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "Dev/Oasis15-3",
+    "isMain": false,
+    "lastScan": "2026-07-17"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PollerClient": {
+  "key": "ati-cxs-OasisCore-PollerClient",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/PollerClient15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PropertyInfo": {
+  "key": "ati-cxs-OasisCore-PropertyInfo",
+  "branches": [
+   {
+    "name": "\"refs/heads/Patch/15.2.4\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "Patch/15.2.4",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Dev/Oasis15-3\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "Dev/Oasis15-3",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2025-11-25"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PropertyService": {
+  "key": "ati-cxs-OasisCore-PropertyService",
+  "branches": [
+   {
+    "name": "Dev/15.3",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-04-09"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-ProximityCalculator": {
+  "key": "ati-cxs-OasisCore-ProximityCalculator",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/neutronProximity16-0\"",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PT-Oasis15-2-4-Administrator": {
+  "key": "ati-cxs-OasisCore-PT-Oasis15-2-4-Administrator",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PT-Oasis15-2-4-BlackBart": {
+  "key": "ati-cxs-OasisCore-PT-Oasis15-2-4-BlackBart",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-PT-Oasis15-2-4-S2SCS": {
+  "key": "ati-cxs-OasisCore-PT-Oasis15-2-4-S2SCS",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Quickets": {
+  "key": "ati-cxs-OasisCore-Quickets",
+  "branches": [
+   {
+    "name": "$(SourceBranchName)",
+    "isMain": false,
+    "lastScan": "2026-01-29"
+   },
+   {
+    "name": "Main",
+    "isMain": false,
+    "lastScan": "2026-01-29"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-02-18"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Quickets-BFF": {
+  "key": "ati-cxs-OasisCore-Quickets-BFF",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-01-21"
+   },
+   {
+    "name": "Dev/Oasis15.3",
+    "isMain": false,
+    "lastScan": "2026-01-30"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-QuickFunds": {
+  "key": "ati-cxs-OasisCore-QuickFunds",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RabbitMq.Sdk": {
+  "key": "ati-cxs-OasisCore-RabbitMq.Sdk",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RCCL-MMI": {
+  "key": "ati-cxs-OasisCore-RCCL-MMI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Main",
+    "isMain": false,
+    "lastScan": "2026-01-19"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RCCL-VDMI": {
+  "key": "ati-cxs-OasisCore-RCCL-VDMI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RCCLVDMI": {
+  "key": "ati-cxs-OasisCore-RCCLVDMI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-01-30"
+   },
+   {
+    "name": "Releases/12.14.1140",
+    "isMain": false,
+    "lastScan": "2026-06-02"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-6.4.0-IdentityServer": {
+  "key": "ati-cxs-OasisCore-RL-6.4.0-IdentityServer",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Releases/6.4.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-Oasis15-0-S2SCS": {
+  "key": "ati-cxs-OasisCore-RL-Oasis15-0-S2SCS",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-Oasis15-0-SecurityService": {
+  "key": "ati-cxs-OasisCore-RL-Oasis15-0-SecurityService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-Oasis15-0-SpeedMedia": {
+  "key": "ati-cxs-OasisCore-RL-Oasis15-0-SpeedMedia",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-07-17"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-Oasis15-0-SurveillanceMonitor": {
+  "key": "ati-cxs-OasisCore-RL-Oasis15-0-SurveillanceMonitor",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-Oasis15-1-SurveillanceMonitor": {
+  "key": "ati-cxs-OasisCore-RL-Oasis15-1-SurveillanceMonitor",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-RL-Oasis15-2-S2SCS": {
+  "key": "ati-cxs-OasisCore-RL-Oasis15-2-S2SCS",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-07-31"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-S2SCS": {
+  "key": "ati-cxs-OasisCore-S2SCS",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-07-17"
+   },
+   {
+    "name": "Patch/15.2.5",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SchedulerService": {
+  "key": "ati-cxs-OasisCore-SchedulerService",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SecurityService": {
+  "key": "ati-cxs-OasisCore-SecurityService",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-Settings-Service": {
+  "key": "ati-cxs-OasisCore-Settings-Service",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Patch/15.2.4\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SightingsApi": {
+  "key": "ati-cxs-OasisCore-SightingsApi",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/neutronProximity16-0\"",
+    "isMain": false,
+    "lastScan": "2026-03-28"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SlotApi": {
+  "key": "ati-cxs-OasisCore-SlotApi",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/SlotManager15.3\"",
+    "isMain": false,
+    "lastScan": "2026-05-11"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SlotEvent": {
+  "key": "ati-cxs-OasisCore-SlotEvent",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/SlotManager15.3\"",
+    "isMain": false,
+    "lastScan": "2026-05-11"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SpeedMedia": {
+  "key": "ati-cxs-OasisCore-SpeedMedia",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-07-17"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SuperPlaymate": {
+  "key": "ati-cxs-OasisCore-SuperPlaymate",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-SurveillanceMonitor": {
+  "key": "ati-cxs-OasisCore-SurveillanceMonitor",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-07"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-TaxFormInfo": {
+  "key": "ati-cxs-OasisCore-TaxFormInfo",
+  "branches": [
+   {
+    "name": "Dev/15.3",
+    "isMain": false,
+    "lastScan": "2026-01-29"
+   },
+   {
+    "name": "master",
+    "isMain": false,
+    "lastScan": "2026-02-13"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-01-15"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-TicketingUI": {
+  "key": "ati-cxs-OasisCore-TicketingUI",
+  "branches": [
+   {
+    "name": "$(build.SourceBranchName",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "Oasis15.3",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-07-11"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-UAC.Service": {
+  "key": "ati-cxs-OasisCore-UAC.Service",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Releases/1.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-07-31"
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-UAC.UI": {
+  "key": "ati-cxs-OasisCore-UAC.UI",
+  "branches": [
+   {
+    "name": "refs/heads/Releases/1.0.0",
+    "isMain": false,
+    "lastScan": "2026-08-07"
+   },
+   {
+    "name": "refs/heads/Dev/dev",
+    "isMain": false,
+    "lastScan": "2026-07-16"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-VoucherService": {
+  "key": "ati-cxs-OasisCore-VoucherService",
+  "branches": [
+   {
+    "name": "Dev/Oasis15.3",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-W2G": {
+  "key": "ati-cxs-OasisCore-W2G",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-WatchDog": {
+  "key": "ati-cxs-OasisCore-WatchDog",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-WisconsinExtract": {
+  "key": "ati-cxs-OasisCore-WisconsinExtract",
+  "branches": [
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisCore-x2s": {
+  "key": "ati-cxs-OasisCore-x2s",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2023-04-25"
+   },
+   {
+    "name": "Dev/Oasis15-3-0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-BucketsManagement": {
+  "key": "ati-cxs-OasisLoyalty-BucketsManagement",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-03"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-BucketsTransactions": {
+  "key": "ati-cxs-OasisLoyalty-BucketsTransactions",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-BulkCardPrint": {
+  "key": "ati-cxs-OasisLoyalty-BulkCardPrint",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-DeliveryService": {
+  "key": "ati-cxs-OasisLoyalty-DeliveryService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/master\"",
+    "isMain": false,
+    "lastScan": "2026-07-28"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Doorman": {
+  "key": "ati-cxs-OasisLoyalty-Doorman",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-DoormanService": {
+  "key": "ati-cxs-OasisLoyalty-DoormanService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-05"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-EncryptIdentity": {
+  "key": "ati-cxs-OasisLoyalty-EncryptIdentity",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Encryptifier": {
+  "key": "ati-cxs-OasisLoyalty-Encryptifier",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Encryptor": {
+  "key": "ati-cxs-OasisLoyalty-Encryptor",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-GatewayTesterApp": {
+  "key": "ati-cxs-OasisLoyalty-GatewayTesterApp",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-InitialImporter": {
+  "key": "ati-cxs-OasisLoyalty-InitialImporter",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-IntegrationGateway": {
+  "key": "ati-cxs-OasisLoyalty-IntegrationGateway",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-InventoryCashCheckout": {
+  "key": "ati-cxs-OasisLoyalty-InventoryCashCheckout",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-KioskGateway": {
+  "key": "ati-cxs-OasisLoyalty-KioskGateway",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoginSyncService": {
+  "key": "ati-cxs-OasisLoyalty-LoginSyncService",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Patch/15.2.5\"",
+    "isMain": false,
+    "lastScan": "2026-01-14"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Lookup": {
+  "key": "ati-cxs-OasisLoyalty-Lookup",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyAssist": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyAssist",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyBackend": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyBackend",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-03"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyCoretoolbox": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyCoretoolbox",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyExclusionMigration": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyExclusionMigration",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyLite": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyLite",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyLiteService": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyLiteService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyPrint": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyPrint",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-LoyaltyUI": {
+  "key": "ati-cxs-OasisLoyalty-LoyaltyUI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-MarketingLoyalty": {
+  "key": "ati-cxs-OasisLoyalty-MarketingLoyalty",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-05"
+   },
+   {
+    "name": "\"refs/heads/Dev/15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-MassImporter": {
+  "key": "ati-cxs-OasisLoyalty-MassImporter",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-05"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-NonCashableLoyaltyGateway": {
+  "key": "ati-cxs-OasisLoyalty-NonCashableLoyaltyGateway",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-OasisLoyaltyGateway": {
+  "key": "ati-cxs-OasisLoyalty-OasisLoyaltyGateway",
+  "branches": [
+   {
+    "name": "\"refs/heads/Sweety/UTCoverage/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-07-31"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-03"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-OfferImport": {
+  "key": "ati-cxs-OasisLoyalty-OfferImport",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2022-12-12"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Outbox": {
+  "key": "ati-cxs-OasisLoyalty-Outbox",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-PatronLogix": {
+  "key": "ati-cxs-OasisLoyalty-PatronLogix",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-09-29"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-PlayerInfoService": {
+  "key": "ati-cxs-OasisLoyalty-PlayerInfoService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-PropertyInfoService": {
+  "key": "ati-cxs-OasisLoyalty-PropertyInfoService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-ReportingService": {
+  "key": "ati-cxs-OasisLoyalty-ReportingService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-RewardsService": {
+  "key": "ati-cxs-OasisLoyalty-RewardsService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-07-25"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Router": {
+  "key": "ati-cxs-OasisLoyalty-Router",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-ServiceBus": {
+  "key": "ati-cxs-OasisLoyalty-ServiceBus",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-ServiceMonitor": {
+  "key": "ati-cxs-OasisLoyalty-ServiceMonitor",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-Synchronizer": {
+  "key": "ati-cxs-OasisLoyalty-Synchronizer",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-TaskCoordinator": {
+  "key": "ati-cxs-OasisLoyalty-TaskCoordinator",
+  "branches": [
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-UniMerge": {
+  "key": "ati-cxs-OasisLoyalty-UniMerge",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-UniMergeService": {
+  "key": "ati-cxs-OasisLoyalty-UniMergeService",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-OasisLoyalty-WebApp": {
+  "key": "ati-cxs-OasisLoyalty-WebApp",
+  "branches": [
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-01-04"
+   },
+   {
+    "name": "\"refs/heads/Dev/OL15.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   }
+  ]
+ },
+ "ati-cxs-Ordering-Apps-DOT": {
+  "key": "ati-cxs-Ordering-Apps-DOT",
+  "branches": [
+   {
+    "name": "refs/heads/master",
+    "isMain": false,
+    "lastScan": "2026-07-25"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Ordering-Service-DOT": {
+  "key": "ati-cxs-Ordering-Service-DOT",
+  "branches": [
+   {
+    "name": "\"refs/heads/master\"",
+    "isMain": false,
+    "lastScan": "2026-01-29"
+   },
+   {
+    "name": "\"refs/heads/Dev/1.8.DotModifiers\"",
+    "isMain": false,
+    "lastScan": "2026-01-24"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-PlayerActivityStmt-App": {
+  "key": "ati-cxs-PlayerActivityStmt-App",
+  "branches": [
+   {
+    "name": "refs/heads/Releases/2.0.0",
+    "isMain": false,
+    "lastScan": "2025-06-21"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-PlayerActivityStmt-Service": {
+  "key": "ati-cxs-PlayerActivityStmt-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/2.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/2.0.3\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/2.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-07-25"
+   },
+   {
+    "name": "\"refs/heads/Dev/2.0.3-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "ati-cxs-Playermax-Administrator": {
+  "key": "ati-cxs-Playermax-Administrator",
+  "branches": [
+   {
+    "name": "refs/heads/Releases/15.1.0",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "refs/heads/dev/24.0.2-Agilysys",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/24.2.1-Agilysys",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.0.2",
+    "isMain": false,
+    "lastScan": "2026-07-26"
+   },
+   {
+    "name": "refs/heads/dev/NMTPhase2",
+    "isMain": false,
+    "lastScan": "2026-07-26"
+   },
+   {
+    "name": "refs/heads/Releases/25.1.0",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.2.0",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/25.0.0",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/25.0.0-SelfEnrollment",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/24.0.3-txprivacy",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/24.2.2-txprivacy",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "refs/heads/dev/MobileFoundationPhase1",
+    "isMain": false,
+    "lastScan": "2026-08-02"
+   },
+   {
+    "name": "refs/heads/Releases/24.2.2",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/SelfEnrollment_idverse",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/UNIMAMGaps",
+    "isMain": false,
+    "lastScan": "2026-08-02"
+   },
+   {
+    "name": "refs/heads/dev/NeutronPhase1",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.1.0",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.1.2",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "refs/heads/Releases/24.1.1",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "refs/heads/Releases/24.0.1",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "refs/heads/dev/SustainableAustralia",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "refs/heads/dev/cloudenablement",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-06-20"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "refs/heads/dev/24.1.2-Digital-Card",
+    "isMain": false,
+    "lastScan": "2026-08-11"
+   },
+   {
+    "name": "main",
+    "isMain": false,
+    "lastScan": "2025-03-20"
+   }
+  ]
+ },
+ "ati-cxs-PlayerMax-ATI.Admin.API": {
+  "key": "ati-cxs-PlayerMax-ATI.Admin.API",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/24.1.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-22"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "\"refs/heads/dev/UNIMAMGaps\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-12"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-06-20"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-PlayerMax-ATI.PlayerMax.HMS.API": {
+  "key": "ati-cxs-PlayerMax-ATI.PlayerMax.HMS.API",
+  "branches": [
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/UNIMAMGaps\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-06-20"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-PlayerMax-ATI.Scheduler.Service": {
+  "key": "ati-cxs-PlayerMax-ATI.Scheduler.Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/24.1.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "\"refs/heads/dev/UNIMAMGaps\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-07-19"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-04-17"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-Playermax-CasinoService": {
+  "key": "ati-cxs-Playermax-CasinoService",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-12"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-22"
+   },
+   {
+    "name": "Releases/24.1.2",
+    "isMain": false,
+    "lastScan": "2026-07-24"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-07-25"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2024-10-04"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-PlayerMax-COGWebAPI": {
+  "key": "ati-cxs-PlayerMax-COGWebAPI",
+  "branches": [
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-22"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/24.1.2",
+    "isMain": false,
+    "lastScan": "2026-07-24"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-08-25"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-Playermax-HMS.WhiteListUploadHandler": {
+  "key": "ati-cxs-Playermax-HMS.WhiteListUploadHandler",
+  "branches": [
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   }
+  ]
+ },
+ "ati-cxs-Playermax-MobileWebAdmin": {
+  "key": "ati-cxs-Playermax-MobileWebAdmin",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-22"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "\"refs/heads/dev/UNIMAMGaps\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-15"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/24.1.2",
+    "isMain": false,
+    "lastScan": "2026-07-23"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-08-25"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-Playermax-PlayerMaxApp": {
+  "key": "ati-cxs-Playermax-PlayerMaxApp",
+  "branches": [
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-20"
+   },
+   {
+    "name": "refs/heads/Releases/24.1.1",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "refs/heads/Releases/24.0.2",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/25.0.0",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.1.2",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "n104757/testmigration",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "refs/heads/Releases/15.1",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "refs/heads/Releases/24.0.1",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "Dev/26.4.0-cardless-cashless",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "refs/heads/Dev/24.1.2-Digital-Card",
+    "isMain": false,
+    "lastScan": "2026-08-14"
+   },
+   {
+    "name": "nm106775test2620build",
+    "isMain": false,
+    "lastScan": "2026-08-03"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-23"
+   },
+   {
+    "name": "refs/heads/Releases/24.2",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Dev/24.2.2-txprivacy",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/SelfEnrollment_idverse",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.2.2",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Dev/25.0.0-SelfEnrollment",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Dev/NMTPhase2",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "refs/heads/dev/NeutronPhase1",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/25.1.0",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/UNIMAMGaps",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Dev/24.0.2-Agilysys",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Dev/24.0.3-txprivacy",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Dev/24.2.1-Agilysys",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/dev/MobileFoundationPhase1",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "refs/heads/Releases/24.1",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-PlayerMax-PublisherService": {
+  "key": "ati-cxs-PlayerMax-PublisherService",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-08-01"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2026-01-23"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-Playermax-ReusableCompLibrary": {
+  "key": "ati-cxs-Playermax-ReusableCompLibrary",
+  "branches": [
+   {
+    "name": "Dev/26.3.0-markertrax-ext",
+    "isMain": false,
+    "lastScan": "2026-07-23"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-05"
+   }
+  ]
+ },
+ "ati-cxs-Playermax-Transcoder": {
+  "key": "ati-cxs-Playermax-Transcoder",
+  "branches": [
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-21"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   }
+  ]
+ },
+ "ati-cxs-PlayerMaxService-ATI.MigrateUser": {
+  "key": "ati-cxs-PlayerMaxService-ATI.MigrateUser",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/25.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.3-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Releases/26.3.0",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Releases/26.2.0",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/dev/SelfEnrollment_idverse\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "enable-sonar-ut",
+    "isMain": false,
+    "lastScan": "2026-07-27"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.2-txprivacy\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-29"
+   },
+   {
+    "name": "\"refs/heads/dev/24.1.2-Digital-Card\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "Dev/26.2.0-MAM-Enhancement",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/dev/cloudenablement\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/SustainableAustralia\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/NeutronPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/15.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-08"
+   },
+   {
+    "name": "\"refs/heads/dev/24.2.1-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/24.0.2-Agilysys\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.1\"",
+    "isMain": false,
+    "lastScan": "2026-07-18"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.2.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/24.1.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "master",
+    "isMain": true,
+    "lastScan": "2025-06-20"
+   },
+   {
+    "name": "\"refs/heads/dev/25.0.0-SelfEnrollment\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/NMTPhase2\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/MobileFoundationPhase1\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/Releases/25.0.0\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   },
+   {
+    "name": "\"refs/heads/dev/UNIMAMGaps\"",
+    "isMain": false,
+    "lastScan": "2026-08-09"
+   }
+  ]
+ },
+ "ati-cxs-S7000-PrimeConsole": {
+  "key": "ati-cxs-S7000-PrimeConsole",
+  "branches": [
+   {
+    "name": "Releases/7.4.8.12_CAU",
+    "isMain": false,
+    "lastScan": "2026-05-11"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-02-03"
+   }
+  ]
+ },
+ "ati-cxs-SelfExclusion-App": {
+  "key": "ati-cxs-SelfExclusion-App",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   },
+   {
+    "name": "Dev/MyPlayToNMT",
+    "isMain": false,
+    "lastScan": "2026-07-28"
+   }
+  ]
+ },
+ "ati-cxs-SelfExclusion-Service": {
+  "key": "ati-cxs-SelfExclusion-Service",
+  "branches": [
+   {
+    "name": "\"refs/heads/Releases/2.0.2\"",
+    "isMain": false,
+    "lastScan": "2026-08-13"
+   },
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "gs-cau-myplay": {
+  "key": "ati-cxs-gs-cau-myplay",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": ""
+   }
+  ]
+ },
+ "JTCAHANZC": {
+  "key": "is-JTCAHANZC",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-11"
+   }
+  ]
+ },
+ "MMMP_APAC": {
+  "key": "is-MMMP_APAC",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-05-04"
+   }
+  ]
+ },
+ "VGT-Server-11-CI": {
+  "key": "ati-d3-Server-11-CI",
+  "branches": [
+   {
+    "name": "main",
+    "isMain": true,
+    "lastScan": "2026-08-12"
+   }
+  ]
+ }
+}

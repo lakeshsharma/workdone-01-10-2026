@@ -1,0 +1,57 @@
+{
+  "Common": {
+    "MainMenuPrompt": "(?i)(main menu|select.*option|enter.*choice|database|service)",
+    "ContinuePrompt": "(?i)(press enter|hit enter|press any key|continue)",
+    "GenericSuccess": "(?i)(success|successfully|completed|created|enabled|started|restarted)",
+    "GenericFailure": "(?i)(failed|error|invalid|denied|not found)"
+  },
+  "Database": {
+    "MainMenuKey": "a",
+    "SubMenuPrompt": "(?i)(database menu|mysql|select.*option|enter.*choice)",
+    "CreateUser": {
+      "Key": "i",
+      "UsernamePrompt": "(?i)(user.?name|mysql user)",
+      "PasswordPrompt": "(?i)password",
+      "IpPrompt": "(?i)(ip|host)",
+      "SuccessPrompt": "(?i)(user.*created|created.*user|success)"
+    },
+    "CreateDatabase": {
+      "Key": "g",
+      "DatabasePrompt": "(?i)(database name|db name)",
+      "SuccessPrompt": "(?i)(database.*created|created.*database|success)"
+    },
+    "GrantPrivileges": {
+      "Key": "h",
+      "UsernamePrompt": "(?i)(user.?name|mysql user)",
+      "IpPrompt": "(?i)(ip|host)",
+      "DatabasePrompt": "(?i)(database name|db name)",
+      "PasswordPrompt": "(?i)password",
+      "SuccessPrompt": "(?i)(privilege.*grant|permissions.*grant|success)"
+    }
+  },
+  "Services": {
+    "MainMenuKey": "b",
+    "SubMenuPrompt": "(?i)(service|start|restart|select.*application|select.*option)",
+    "ActionKeys": {
+      "Start": "s",
+      "Restart": "r"
+    },
+    "ServiceKeys": {
+      "AppServer": "a",
+      "Concentrator": "b",
+      "Report Server": "c",
+      "MediaSign": "d"
+    },
+    "SuccessPrompt": "(?i)(started|restarted|success)"
+  },
+  "Ssl": {
+    "MainMenuKey": "n",
+    "SubMenuPrompt": "(?i)(ssl|select.*option|concentrator|report)",
+    "ComponentKeys": {
+      "Concentrator": "a",
+      "Report Server": "b"
+    },
+    "EnableKey": "e",
+    "SuccessPrompt": "(?i)(ssl.*enabled|enabled.*ssl|success)"
+  }
+}

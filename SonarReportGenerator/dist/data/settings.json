@@ -1,0 +1,37 @@
+{
+  "output_dir": "C:\\Users\\LS112622\\Downloads\\OneLinkAdminTool\\SonarVulnReporter\\dist\\output",
+  "period_type": "Monthly",
+  "period_label": "August'26",
+  "prior_label": "July'26",
+  "recipients": {
+    "nCompass": {
+      "to": "lakesh.sharma@aristocrat.com",
+      "cc": ""
+    },
+    "CX-Mobile": {
+      "to": "",
+      "cc": ""
+    },
+    "EX-Mobile": {
+      "to": "",
+      "cc": ""
+    },
+    "Oasis": {
+      "to": "",
+      "cc": ""
+    },
+    "Loyalty": {
+      "to": "",
+      "cc": ""
+    },
+    "System7000": {
+      "to": "",
+      "cc": ""
+    },
+    "OneLink": {
+      "to": "",
+      "cc": ""
+    }
+  },
+  "send_directly": false
+}

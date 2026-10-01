@@ -1,0 +1,113 @@
+name: Build SonarVulnReporter (EXE)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tool_name:
+        description: "Tool name (window title / header banner / footer / email signature)"
+        required: false
+        default: "SonarQube Vulnerability Reporter"
+      tool_version:
+        description: "Version shown in the footer"
+        required: false
+        default: "1.0.0"
+      output_exe_name:
+        description: "Compiled EXE filename (.exe added automatically if omitted)"
+        required: false
+        default: "SonarVulnReporter.exe"
+
+# Nothing below is ever committed back to the repo - all substitutions happen
+# only inside this runner's disposable checkout for this one build.
+# Uses whatever Python is already installed on the runner (this is a persistent
+# self-hosted machine, not an ephemeral one) - same as build_exe.bat does locally.
+jobs:
+  build:
+    runs-on: [self-hosted, Windows, windows-build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Python is available
+        shell: powershell
+        run: |
+          Write-Host "::group::Checking Python"
+          python --version
+          if (-not $?) { throw "Python was not found on PATH for this runner. Install Python on olk-win11build first." }
+          Write-Host "::endgroup::"
+
+      - name: Apply build parameters
+        shell: powershell
+        run: |
+          Write-Host "::group::Applying build parameters"
+
+          $toolName    = '${{ inputs.tool_name }}'
+          $toolVersion = '${{ inputs.tool_version }}'
+
+          $configFile = 'app\config.py'
+          (Get-Content -LiteralPath $configFile -Raw) `
+            -replace 'APP_NAME = "SonarQube Vulnerability Reporter"', "APP_NAME = `"$toolName`"" `
+            -replace 'APP_VERSION = "1\.0\.0"', "APP_VERSION = `"$toolVersion`"" `
+            | Set-Content -LiteralPath $configFile -NoNewline
+
+          Write-Host "Tool name : $toolName"
+          Write-Host "Version   : $toolVersion"
+          Write-Host "::endgroup::"
+
+      - name: Install dependencies
+        shell: powershell
+        run: |
+          Write-Host "::group::Installing dependencies"
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          Write-Host "::endgroup::"
+
+      - name: Build EXE with PyInstaller
+        shell: powershell
+        run: |
+          Write-Host "::group::Building EXE"
+          $exeName  = '${{ inputs.output_exe_name }}'
+          $baseName = [System.IO.Path]::GetFileNameWithoutExtension($exeName)
+
+          python -m PyInstaller --noconfirm --onefile --windowed `
+            --name $baseName `
+            --add-data "data;data" `
+            --hidden-import win32com --hidden-import win32com.client `
+            --collect-submodules win32com `
+            main.py
+
+          $builtExe = "dist\$baseName.exe"
+          if (-not (Test-Path -LiteralPath $builtExe)) { throw "Build produced no output file: $builtExe" }
+          $exe = Get-Item -LiteralPath $builtExe
+          Write-Host ("Built: {0} ({1:N2} MB)" -f $exe.FullName, ($exe.Length / 1MB)) -ForegroundColor Green
+          if ($exe.Length -lt 5MB) {
+            throw "The EXE is under 5 MB - dependencies may be missing. Failing the build."
+          }
+
+          echo "EXE_PATH=$builtExe" >> $env:GITHUB_ENV
+          echo "EXE_NAME=$baseName.exe" >> $env:GITHUB_ENV
+          Write-Host "::endgroup::"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXE_NAME }}
+          path: ${{ env.EXE_PATH }}
+          retention-days: 30
+
+      - name: Build summary
+        shell: powershell
+        if: always()
+        run: |
+          $summary = @"
+          ## SonarVulnReporter Build Summary
+
+          | Parameter | Value |
+          |---|---|
+          | Tool name | ``${{ inputs.tool_name }}`` |
+          | Version | ``${{ inputs.tool_version }}`` |
+          | Output EXE | ``${{ env.EXE_NAME }}`` |
+          | Branch | ``${{ github.ref_name }}`` |
+
+          Download the build from this run's **Summary** page, under **Artifacts**.
+          "@
+          $summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append

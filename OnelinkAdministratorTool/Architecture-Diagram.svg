@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="1180" viewBox="0 0 680 1180" role="img" font-family="Segoe UI, Arial, sans-serif">
+<title>OneLink Administration Tool architecture</title>
+<desc>Diagram showing how the standalone EXE is built from source files, its internal layers from UI down to remote operations, and the SSH data flow out to target servers.</desc>
+<rect x="0" y="0" width="680" height="1180" fill="#FFFFFF"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 1L8 5L2 9" fill="none" stroke="#444441" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="arrow-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 1L8 5L2 9" fill="none" stroke="#993C1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- Row 1: build pipeline -->
+<rect x="40" y="40" width="150" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="115" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#2C2C2A">src\ (40+ files)</text>
+<text x="115" y="78" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444441">human-edited source</text>
+
+<rect x="265" y="40" width="150" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="340" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#2C2C2A">Build.ps1</text>
+<text x="340" y="78" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444441">stitches + compiles</text>
+
+<rect x="490" y="40" width="150" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="565" y="60" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#3C3489">OneLinkAdminTool.exe</text>
+<text x="565" y="78" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">standalone, no installs</text>
+
+<line x1="190" y1="68" x2="263" y2="68" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="415" y1="68" x2="488" y2="68" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="565" y1="96" x2="565" y2="130" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Outer container: the running app -->
+<rect x="60" y="130" width="560" height="620" rx="20" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="90" y="158" dominant-baseline="central" font-size="14" font-weight="600" fill="#3C3489">Running app (inside the EXE)</text>
+<text x="90" y="176" dominant-baseline="central" font-size="12" fill="#534AB7">everything below runs on the tech's machine, offline</text>
+
+<!-- UI layer -->
+<rect x="90" y="196" width="500" height="64" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="340" y="218" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#0C447C">UI layer - WPF window</text>
+<text x="340" y="238" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#185FA5">tabs, buttons, grids built from embedded XAML</text>
+<line x1="340" y1="260" x2="340" y2="286" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- App logic layer -->
+<rect x="90" y="286" width="500" height="64" rx="12" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="340" y="308" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">Application logic</text>
+<text x="340" y="328" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#0F6E56">server inventory, database, package, certificate tabs</text>
+<line x1="340" y1="350" x2="340" y2="376" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Remote ops layer -->
+<rect x="90" y="376" width="500" height="64" rx="12" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="340" y="398" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">Remote operations</text>
+<text x="340" y="418" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#993C1D">SSH session mgmt, DB ops, package upload, cert ops</text>
+<line x1="340" y1="440" x2="340" y2="466" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Core services layer -->
+<rect x="90" y="466" width="500" height="64" rx="12" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="340" y="488" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#2C2C2A">Core services</text>
+<text x="340" y="508" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444441">config loading, logging, activity recorder</text>
+<line x1="340" y1="530" x2="340" y2="556" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Startup / foundation layer with embedded module -->
+<rect x="90" y="556" width="500" height="90" rx="12" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="340" y="578" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#2C2C2A">Startup / foundation</text>
+<text x="340" y="596" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#444441">app identity, .NET assemblies (WPF, compression)</text>
+
+<rect x="180" y="608" width="320" height="30" rx="15" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="340" y="623" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#633806">embedded Posh-SSH module - self-extracts on first run</text>
+
+<!-- SSH connections down to services strip -->
+<line x1="340" y1="646" x2="340" y2="700" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="90" y="700" width="500" height="50" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="340" y="718" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">SSH connections, one per server</text>
+<text x="340" y="734" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#993C1D">commands run remotely, results stream back</text>
+
+<!-- servers outside container -->
+<text x="340" y="775" text-anchor="middle" font-size="14" font-weight="600" fill="#712B13">Target OneLink servers (Linux)</text>
+
+<rect x="80" y="800" width="150" height="60" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="155" y="822" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">DB server</text>
+<text x="155" y="840" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#993C1D">MySQL / MariaDB</text>
+
+<rect x="265" y="800" width="150" height="60" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="340" y="822" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">App server</text>
+<text x="340" y="840" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#993C1D">OneLink packages</text>
+
+<rect x="450" y="800" width="150" height="60" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="525" y="822" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">Cert / web server</text>
+<text x="525" y="840" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#993C1D">SSL certificates</text>
+
+<path d="M 155 750 L 155 780 L 155 798" fill="none" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arrow-coral)"/>
+<path d="M 340 750 L 340 780 L 340 798" fill="none" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arrow-coral)"/>
+<path d="M 525 750 L 525 780 L 525 798" fill="none" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arrow-coral)"/>
+
+<!-- Legend -->
+<rect x="90" y="900" width="10" height="10" rx="2" fill="#378ADD"/>
+<text x="108" y="909" dominant-baseline="central" font-size="12" fill="#444441">UI</text>
+<rect x="150" y="900" width="10" height="10" rx="2" fill="#1D9E75"/>
+<text x="168" y="909" dominant-baseline="central" font-size="12" fill="#444441">app logic</text>
+<rect x="240" y="900" width="10" height="10" rx="2" fill="#D85A30"/>
+<text x="258" y="909" dominant-baseline="central" font-size="12" fill="#444441">remote ops / SSH</text>
+<rect x="380" y="900" width="10" height="10" rx="2" fill="#888780"/>
+<text x="398" y="909" dominant-baseline="central" font-size="12" fill="#444441">core / startup</text>
+<rect x="490" y="900" width="10" height="10" rx="2" fill="#BA7517"/>
+<text x="508" y="909" dominant-baseline="central" font-size="12" fill="#444441">embedded module</text>
+
+<!-- Data flow example strip -->
+<rect x="60" y="940" width="560" height="200" rx="16" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="90" y="966" dominant-baseline="central" font-size="14" font-weight="600" fill="#2C2C2A">Example: clicking "backup database"</text>
+
+<rect x="90" y="986" width="130" height="44" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="155" y="1008" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#0C447C">button click</text>
+<line x1="220" y1="1008" x2="248" y2="1008" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<rect x="250" y="986" width="130" height="44" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="315" y="1008" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#085041">background job</text>
+<line x1="380" y1="1008" x2="408" y2="1008" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<rect x="410" y="986" width="130" height="44" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="475" y="1008" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">SSH command</text>
+<line x1="475" y1="1030" x2="475" y2="1050" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<rect x="380" y="1050" width="190" height="44" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="475" y="1072" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#712B13">runs on remote server</text>
+<line x1="380" y1="1072" x2="220" y2="1072" stroke="#444441" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<rect x="90" y="1050" width="130" height="44" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="155" y="1072" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="600" fill="#2C2C2A">log + UI update</text>
+
+<text x="90" y="1112" dominant-baseline="central" font-size="12" fill="#444441">UI stays responsive throughout - up to a 36 hour timeout ceiling for large dumps</text>
+
+</svg>

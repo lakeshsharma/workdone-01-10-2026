@@ -1,0 +1,14 @@
+{
+  "studios": [
+    "nCompass",
+    "CX-Mobile",
+    "EX-Mobile",
+    "Oasis",
+    "Loyalty",
+    "System7000",
+    "OneLink"
+  ],
+  "disabled": [
+    "OneLink"
+  ]
+}

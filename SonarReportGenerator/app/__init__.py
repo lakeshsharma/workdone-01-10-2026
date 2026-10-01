@@ -1,0 +1,1 @@
+"""SonarQube Vulnerability Reporter package."""

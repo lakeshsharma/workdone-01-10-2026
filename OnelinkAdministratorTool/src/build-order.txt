@@ -1,0 +1,77 @@
+# ============================================================================
+#  Foreman / OneLink Administration Tool - BUILD ORDER
+#
+#  Build.ps1 joins the files below, in THIS order, into OneLinkAdminTool.ps1.
+#  ORDER MATTERS: PowerShell executes the script top to bottom, so a function,
+#  class or variable must appear before the first line that uses it at start-up.
+#  When you add a new part file, add it here too - the build stops if a .ps1
+#  under src\ is missing from this list.
+#  One path per line, relative to src\. Lines starting with # are ignored.
+# ============================================================================
+
+# ---- 01-Startup
+01-Startup/01-App-Identity-and-Runtime-Preflight.ps1
+01-Startup/02-Embedded-PoshSSH-Payload.ps1
+01-Startup/03-PoshSSH-Extraction-and-Import.ps1
+01-Startup/04-Windows-Assemblies-Roles-and-Data-Models.ps1
+
+# ---- 02-Embedded-Resources
+02-Embedded-Resources/01-Base-Directory-and-Default-Configuration.ps1
+02-Embedded-Resources/02-Main-Window-Layout-Xaml.ps1
+
+# ---- 03-Core-Services
+03-Core-Services/01-Configuration-Loader.ps1
+03-Core-Services/02-Logging-and-User-Preferences.ps1
+03-Core-Services/03-Efficiency-Log-and-Activity-Recorder.ps1
+
+# ---- 04-Remote-Operations
+04-Remote-Operations/01-SSH-Session-Management.ps1
+04-Remote-Operations/02-Database-Operations.ps1
+04-Remote-Operations/03-Service-SSL-and-Certificate-Operations.ps1
+04-Remote-Operations/04-Package-Upload-and-Install.ps1
+04-Remote-Operations/05-Service-Discovery-and-OS-Detection.ps1
+
+# ---- 05-Main-Window-Setup
+05-Main-Window-Setup/01-Window-Load-and-Control-Binding.ps1
+05-Main-Window-Setup/02-Runtime-State-and-Log-Initialization.ps1
+05-Main-Window-Setup/03-Activity-Capture-Hooks-and-Footer-Controls.ps1
+
+# ---- 06-UI-Common
+06-UI-Common/01-Message-Dialogs-and-Report-Window.ps1
+06-UI-Common/02-Remote-File-Editor.ps1
+06-UI-Common/03-SSH-Command-Console.ps1
+06-UI-Common/04-UI-Common-Helpers.ps1
+
+# ---- 07-Server-Inventory
+07-Server-Inventory/01-Target-Pickers-and-Service-Checklist.ps1
+07-Server-Inventory/02-Multi-Server-Operation-Runner.ps1
+07-Server-Inventory/03-Server-Grid-Editing-Credentials-and-Roles.ps1
+07-Server-Inventory/04-Server-Health-and-Resources.ps1
+07-Server-Inventory/05-Server-Grid-Events-and-Context-Menu.ps1
+07-Server-Inventory/06-Server-Connect-and-Disconnect.ps1
+
+# ---- 08-Configuration-Import-Export
+08-Configuration-Import-Export/01-Config-Fields-and-XLSX-Engine.ps1
+08-Configuration-Import-Export/02-Config-Export-Import-Template-Buttons.ps1
+
+# ---- 09-Database-Tab
+09-Database-Tab/01-MySQL-Service-Control.ps1
+09-Database-Tab/02-InnoDB-Buffer-Pool.ps1
+09-Database-Tab/03-Run-SQL-Script.ps1
+09-Database-Tab/04-Create-User-Create-Database-and-Grant.ps1
+09-Database-Tab/05-Backup-Restore-Browse-Controls.ps1
+09-Database-Tab/06-Background-Job-Runner.ps1
+09-Database-Tab/07-Database-Backup-and-Restore.ps1
+
+# ---- 10-Package-Tab
+10-Package-Tab/01-Package-Plan-and-Network-Share-Access.ps1
+10-Package-Tab/02-Package-Deployment-Engine.ps1
+10-Package-Tab/03-Package-Tab-Button-Handlers.ps1
+10-Package-Tab/04-Service-Installer-Control-and-Details.ps1
+
+# ---- 11-Certificates-Tab
+11-Certificates-Tab/01-Certificate-Deploy-Scan-and-Status.ps1
+
+# ---- 12-Application-Lifecycle
+12-Application-Lifecycle/01-Log-and-Metrics-Export-Buttons.ps1
+12-Application-Lifecycle/02-Startup-Shutdown-and-Error-Handling.ps1

@@ -1,0 +1,45 @@
+{
+  "ApplicationName": "OneLink Administration Tool",
+  "Ssh": {
+    "DefaultPort": 22,
+    "ConnectionTimeoutSeconds": 20,
+    "CommandTimeoutSeconds": 120,
+    "PromptTimeoutSeconds": 45,
+    "AcceptNewHostKey": true,
+    "TerminalName": "xterm",
+    "TerminalWidth": 140,
+    "TerminalHeight": 45,
+    "BufferSize": 8192
+  },
+  "Remote": {
+    "NMenuCommand": "nmenu",
+    "UploadDirectory": "/tmp/onelink-admin-tool",
+    "UseSudo": true
+  },
+  "Packages": {
+    "InstallCommand": "sudo rpm -ivh --replacepkgs '{0}'",
+    "UpgradeCommand": "sudo rpm -Uvh '{0}'"
+  },
+  "Logging": {
+    "Directory": "Logs",
+    "MinimumLevel": "Info"
+  },
+  "Services": [
+    {
+      "DisplayName": "AppServer",
+      "SystemdName": "onelink-appserver"
+    },
+    {
+      "DisplayName": "Concentrator",
+      "SystemdName": "onelink-concentrator"
+    },
+    {
+      "DisplayName": "Report Server",
+      "SystemdName": "onelink-reportserver"
+    },
+    {
+      "DisplayName": "MediaSign",
+      "SystemdName": "onelink-mediasign"
+    }
+  ]
+}

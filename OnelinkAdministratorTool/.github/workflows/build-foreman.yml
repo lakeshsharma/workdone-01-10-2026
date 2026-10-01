@@ -1,0 +1,186 @@
+name: Build Foreman (EXE + Docs)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tool_name:
+        description: "Tool name (window title / header / footer / popups)"
+        required: false
+        default: "Foreman"
+      tool_tagline:
+        description: "Tagline shown next to the name (header badge + footer)"
+        required: false
+        default: "OneLink Remote Administration"
+      build_date:
+        description: "\"Latest Update\" date shown in the footer (leave blank = today's date)"
+        required: false
+        default: ""
+      output_exe_name:
+        description: "Compiled EXE filename"
+        required: false
+        default: "OneLinkAdministrationTool.exe"
+      artifact_zip_name:
+        description: "Name of the final zipped artifact (no .zip extension)"
+        required: false
+        default: "Foreman-Build"
+      overview_doc_name:
+        description: "Overview document filename, no extension (.pptx is added automatically)"
+        required: false
+        default: "Foreman - Feature Overview Document - Release - 1.0.0"
+      toolkit_doc_name:
+        description: "Toolkit filename, no extension (.xlsx is added automatically)"
+        required: false
+        default: "Foreman - Setup and Operations Toolkit - v1.0"
+
+# Nothing below is ever committed back to the repo - all substitutions happen
+# only inside this runner's disposable checkout for this one build.
+jobs:
+  build:
+    runs-on: [self-hosted, Windows, windows-build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply build parameters
+        shell: powershell
+        run: |
+          Write-Host "::group::Applying build parameters"
+
+          $toolName    = '${{ inputs.tool_name }}'
+          $toolVersion = '${{ github.run_number }}'
+          $toolTagline = '${{ inputs.tool_tagline }}'
+          $buildDate   = '${{ inputs.build_date }}'
+          if ([string]::IsNullOrWhiteSpace($buildDate)) {
+            $buildDate = Get-Date -Format 'dd-MMM-yyyy'
+          }
+
+          $identityFile = 'src\01-Startup\01-App-Identity-and-Runtime-Preflight.ps1'
+          $xamlFile     = 'src\02-Embedded-Resources\02-Main-Window-Layout-Xaml.ps1'
+
+          (Get-Content -LiteralPath $identityFile -Raw) `
+            -replace "\`$script:AppName = 'Foreman'", "`$script:AppName = '$toolName'" `
+            -replace "\`$script:AppTagline = 'OneLink Remote Administration'", "`$script:AppTagline = '$toolTagline'" `
+            | Set-Content -LiteralPath $identityFile -NoNewline
+
+          (Get-Content -LiteralPath $xamlFile -Raw) `
+            -replace 'Text="Version : 1\.1\.0"', "Text=`"Version : $toolVersion`"" `
+            -replace 'Text="Latest Update : 02-Sep-2026"', "Text=`"Latest Update : $buildDate`"" `
+            | Set-Content -LiteralPath $xamlFile -NoNewline
+
+          Write-Host "Tool name    : $toolName"
+          Write-Host "Version      : $toolVersion"
+          Write-Host "Tagline      : $toolTagline"
+          Write-Host "Latest Update: $buildDate"
+          Write-Host "::endgroup::"
+
+      - name: Ensure ps2exe module is available
+        shell: powershell
+        run: |
+          Write-Host "::group::Checking ps2exe module"
+          if (-not (Get-InstalledModule -Name ps2exe -ErrorAction SilentlyContinue)) {
+            Write-Host "ps2exe not found - installing for current user..."
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+            if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
+              Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser | Out-Null
+            }
+            Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+
+            Install-Module -Name ps2exe -Scope CurrentUser -Force -AllowClobber -Confirm:$false
+          }
+          else {
+            Write-Host "ps2exe already installed."
+          }
+          Write-Host "::endgroup::"
+
+      - name: Assemble source and compile EXE
+        shell: powershell
+        run: |
+          Write-Host "::group::Assembling src\ -> OneLinkAdminTool.ps1"
+          .\Build.ps1 -AssembleOnly
+          if (-not $?) { throw "Assemble step failed." }
+          Write-Host "::endgroup::"
+
+          Write-Host "::group::Compiling EXE with PS2EXE"
+          $ps2exe = (Get-InstalledModule ps2exe -ErrorAction Stop).InstalledLocation
+          $env:PSModulePath += ";$(Split-Path (Split-Path $ps2exe -Parent) -Parent)"
+          Import-Module "$ps2exe\ps2exe.psd1" -Force
+
+          $outputExe = '${{ inputs.output_exe_name }}'
+          Invoke-PS2EXE -InputFile '.\OneLinkAdminTool.ps1' -OutputFile ".\$outputExe" -NoConsole -STA
+
+          if (-not (Test-Path -LiteralPath ".\$outputExe")) { throw "Build produced no output file." }
+          $exe = Get-Item -LiteralPath ".\$outputExe"
+          Write-Host ("Built: {0} ({1:N2} MB)" -f $exe.FullName, ($exe.Length / 1MB)) -ForegroundColor Green
+          if ($exe.Length -lt 1MB) {
+            throw "The EXE is under 1 MB - the embedded Posh-SSH module may be missing. Failing the build."
+          }
+          Write-Host "::endgroup::"
+
+      - name: Package artifact (EXE + Overview + Toolkit)
+        shell: powershell
+        run: |
+          Write-Host "::group::Packaging artifact"
+          $outputExe = '${{ inputs.output_exe_name }}'
+          $zipName   = '${{ inputs.artifact_zip_name }}'
+
+          $stageDir = Join-Path $env:RUNNER_TEMP 'foreman-artifact'
+          if (Test-Path -LiteralPath $stageDir) { Remove-Item -LiteralPath $stageDir -Recurse -Force }
+          New-Item -ItemType Directory -Path $stageDir | Out-Null
+
+          $overviewDoc = '${{ inputs.overview_doc_name }}' + '.pptx'
+          $toolkitDoc  = '${{ inputs.toolkit_doc_name }}' + '.xlsx'
+
+          $filesToInclude = @(
+            $outputExe,
+            $overviewDoc,
+            $toolkitDoc
+          )
+
+          foreach ($f in $filesToInclude) {
+            if (Test-Path -LiteralPath $f) {
+              Copy-Item -LiteralPath $f -Destination $stageDir
+              Write-Host "Added: $f" -ForegroundColor Green
+            }
+            else {
+              Write-Warning "Expected file not found, skipping: $f"
+            }
+          }
+
+          $zipPath = Join-Path $env:RUNNER_TEMP "$zipName.zip"
+          if (Test-Path -LiteralPath $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
+          Compress-Archive -Path (Join-Path $stageDir '*') -DestinationPath $zipPath
+
+          Write-Host ("Artifact zip: {0} ({1:N2} MB)" -f $zipPath, ((Get-Item $zipPath).Length / 1MB)) -ForegroundColor Green
+          echo "ZIP_PATH=$zipPath" >> $env:GITHUB_ENV
+          echo "ZIP_NAME=$zipName" >> $env:GITHUB_ENV
+          Write-Host "::endgroup::"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ZIP_NAME }}
+          path: ${{ env.ZIP_PATH }}
+          retention-days: 30
+
+      - name: Build summary
+        shell: powershell
+        if: always()
+        run: |
+          $summary = @"
+          ## Foreman Build Summary
+
+          | Parameter | Value |
+          |---|---|
+          | Tool name | ``${{ inputs.tool_name }}`` |
+          | Version | ``${{ github.run_number }}`` |
+          | Tagline | ``${{ inputs.tool_tagline }}`` |
+          | Output EXE | ``${{ inputs.output_exe_name }}`` |
+          | Overview doc | ``${{ inputs.overview_doc_name }}.pptx`` |
+          | Toolkit doc | ``${{ inputs.toolkit_doc_name }}.xlsx`` |
+          | Artifact zip | ``${{ env.ZIP_NAME }}.zip`` |
+          | Branch | ``${{ github.ref_name }}`` |
+
+          Download the build from this run's **Summary** page, under **Artifacts**.
+          "@
+          $summary | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
